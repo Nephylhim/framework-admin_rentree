@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
-    require_once dirname(__FILE__).'/lib/limonade.php';
-=======
-require_once dirname(dirname(dirname(__FILE__))).'/lib/limonade/limonade.php';
->>>>>>> framework-admin_rentree/master
+require_once 'lib/limonade.php';
 
 dispatch("/", "home.php");
 dispatch("/home", "home.php");

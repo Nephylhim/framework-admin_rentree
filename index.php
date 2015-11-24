@@ -1,6 +1,9 @@
 <?php
 require_once 'lib/limonade.php';
 
-dispatch("/", "home.php");
-dispatch("/home", "home.php");
+dispatch("/", "home");
+dispatch("/home", "home");
+
+
+run();
 ?>

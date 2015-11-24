@@ -9,7 +9,7 @@
   $DbName = "rentree";
   $DbUser = "rentree";
   $DbPassword = "rentree"; 
-  
+  /*
   $libellePromo = array (
     "1&#x02B3;&#x1D49; année, Cycle Sciences de l'Ingénieur" => "CSI_A1",
     "1&#x02B3;&#x1D49; année, Cycle Informatique et Réseaux (Brest)" => "CIR_BREST_A1",
@@ -29,6 +29,21 @@
     "5&#x1D49; année, Majeure - M2 (non alternant)" => "M_A5_NONALT",    
     "5&#x1D49; année, Cycle Ingénieur Par l'Apprentissage" => "CIPA_A5"
   );
+*/
+  try {
+    $bdd = new PDO('mysql:host='.$DbHost.';dbname='.$DbName, $DbUser, $DbPassword);
+  }
+  catch (Exception $e){
+    die('Erreur : '.$e->getMessage());
+  }
+
+  $reponse = $bdd->query('SELECT * FROM promo_label');
+
+  $libellePromo = [];
+
+  while($donnees = $reponse->fetch()){
+    $libellePromo[$donnees['label']] = $donnees['promo'];
+  }
 
   require_once("lib.php");
   

@@ -6,9 +6,9 @@
   
   // informations concernant la base de données
   $DbHost = "127.0.0.1";
-  $DbName = "à compléter...";
-  $DbUser = "à compléter...";
-  $DbPassword = "à compléter..."; 
+  $DbName = "rentree";
+  $DbUser = "rentree";
+  $DbPassword = "rentree"; 
   
   $libellePromo = array (
     "1&#x02B3;&#x1D49; année, Cycle Sciences de l'Ingénieur" => "CSI_A1",

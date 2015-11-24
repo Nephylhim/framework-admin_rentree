@@ -18,6 +18,17 @@
             echo $body;
         ?>
 
+        <footer>
+            <?php if(!empty($footer)):
+                echo $footer;
+                endif;
+            ?>
+        </footer>
+
         <script src='js/jquery-2.1.4.min.js'></script>
+        <?php if(!empty($script)):
+            echo $script;
+            endif;
+        ?>
     </body>
 </html>

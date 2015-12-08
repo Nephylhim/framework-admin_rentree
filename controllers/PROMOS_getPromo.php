@@ -1,7 +1,8 @@
 <?php
 
 function getPromos(){
-    return html("Coucou !!! =)");
+    //return json("../views/promos/getPromo.json.php");
+    return json("test.json");
 }
 
 

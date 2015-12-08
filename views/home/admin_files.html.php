@@ -75,9 +75,11 @@
 
         $.ajax({
             url: "<?=url_for('/promos/get'); ?>",
-            method: "GET"
-        }).success( function($content){
-            $("#promotionList").html($content);
+            method: "GET",
+            dataType: "json"
+        }).success( function(content){
+            console.log(content);
+            $("#promotionList").html(content);
         });
     });
 </script>

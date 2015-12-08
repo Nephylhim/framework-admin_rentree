@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mar 24 Novembre 2015 à 15:24
+-- Généré le: Mar 08 Décembre 2015 à 14:02
 -- Version du serveur: 5.5.46-0ubuntu0.14.04.2
 -- Version de PHP: 5.5.9-1ubuntu4.14
 
@@ -28,16 +28,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `identifiant` varchar(256) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `nom_fils` varchar(256) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `prenom_fils` varchar(256) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `ddn_fils` varchar(256) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `tel_mobile` varchar(256) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `courriel` varchar(256) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `identifiant` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `nom_fils` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `prenom_fils` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `ddn_fils` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `tel_mobile` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `courriel` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `date` datetime NOT NULL,
-  `ip` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `ip` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `data`
+--
+
+INSERT INTO `data` (`id`, `identifiant`, `nom_fils`, `prenom_fils`, `ddn_fils`, `tel_mobile`, `courriel`, `date`, `ip`) VALUES
+(1, 'toto@gmail.com', 'AAAA', 'aaaa', '13 novembre 2015', '0123456789', 'parents@gmail.com', '2015-11-24 16:48:53', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -48,11 +55,11 @@ CREATE TABLE IF NOT EXISTS `data` (
 CREATE TABLE IF NOT EXISTS `document` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `rang` int(11) NOT NULL,
-  `promo` varchar(256) COLLATE utf8_bin NOT NULL,
-  `libelle` varchar(256) COLLATE utf8_bin NOT NULL,
-  `fichier` varchar(256) COLLATE utf8_bin NOT NULL,
+  `promo` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `libelle` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `fichier` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=56 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=56 ;
 
 --
 -- Contenu de la table `document`
@@ -122,10 +129,10 @@ INSERT INTO `document` (`id`, `rang`, `promo`, `libelle`, `fichier`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `promo_label` (
-  `promo` varchar(20) NOT NULL,
-  `label` varchar(150) NOT NULL,
+  `promo` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `label` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`promo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `promo_label`

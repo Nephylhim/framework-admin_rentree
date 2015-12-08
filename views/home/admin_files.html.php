@@ -15,9 +15,7 @@
     <div class="row">
         <div class="col-md-6">
 
-            <a href="#" class="button-m">Fichiers</a>
-            <a href="#" class="button-m">Promos</a>
-            <a href="#" class="button-m">Datas</a>
+
 
         </div>
     </div>

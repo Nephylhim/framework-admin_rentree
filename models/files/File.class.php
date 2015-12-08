@@ -19,6 +19,14 @@ class Files
 	}
 
 	/**
+	 * @param int $id
+	 */
+	private function setId($id)
+	{
+		$this->id = $id;
+	}
+
+	/**
 	 * @return int
 	 */
 	public function getRang()

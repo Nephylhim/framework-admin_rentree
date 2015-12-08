@@ -17,7 +17,7 @@
 
             <a href="?/admin_files" class="button-m">Fichiers</a>
             <a href="?/admin_files" class="button-m">Promos</a>
-            <a href="?" class="button-m">Datas</a>
+            <a href="?/admin_datas" class="button-m">Datas</a>
 
         </div>
     </div>

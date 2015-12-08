@@ -12,6 +12,11 @@
 </div>
 
 <div class="body">
+    <nav>
+        <a href="?">Accueil</a>
+        <a href="?/admin_files"> Administration Fichiers / Promos </a>
+        <a href="?/admin_datas"> Administration Datas </a>
+    </nav>
     <div class="row">
         <div class="col-md-6">
 

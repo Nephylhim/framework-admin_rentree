@@ -79,6 +79,7 @@
             dataType: "json"
         }).success( function(content){
             console.log(content);
+			console.log(content.promos[1].label);
             $("#promotionList").html(content);
         });
     });

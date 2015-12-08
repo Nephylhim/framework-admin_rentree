@@ -1,30 +1,23 @@
 <?php content_for('body'); ?>
 
-wololo !!!
-
 <div class="header">
-    <p class="center">
-        <img src="ressources/images/logo_ISEN.png" />
-    </p>
-    <h1 class="center blisen">Documents de rentrée</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="ressources/images/logo_ISEN.png" />
+        </div>
+        <div class="col-md-4">
+            <h1 class="center blisen">Panneau d'administration</h1>
+        </div>
+    </div>
 </div>
 
 <div class="body">
     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+        <div class="col-md-4 col-md-offset-1">
 
-            <div class="row">
-
-                <div class="form-line">
-                    <div class="col-sm-6">
-                        Courriel :
-                    </div>
-                    <div class="col-sm-6">
-                        <input type="email">
-                    </div>
-                </div>
-
-            </div>
+            <a href="#" class="button-m">Fichiers</a>
+            <a href="#" class="button-m">Promos</a>
+            <a href="#" class="button-m">Datas</a>
 
         </div>
     </div>

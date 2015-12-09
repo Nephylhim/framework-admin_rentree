@@ -101,5 +101,8 @@ class Files
 
 	public static function getAllDocumentByPromo($promo)
 	{}
+
+	public static function deleteAllDocuments()
+	{}
 }
 ?>

@@ -18,12 +18,38 @@
         <a href="?/admin_datas"> Administration Datas </a>
     </nav>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-5">
 
             <section class="promotionListPanel">
                 <h1>Liste des promotions</h1>
 
-                <div class="newPromo">
+                <div class="newPromo row">
+                    <div class="col-md-5">
+                        <input id="promotionName" class="form-control" placeholder="Nouvelle promotion : nom"/>
+                    </div>
+                    <div class="col-md-5">
+                        <input id="promotionLabel" class="form-control" placeholder="Nouvelle promotion : label"/>
+                    </div>
+                    <div class="col-md-2">
+                        <button id="bouton_AjouterPromo" title="Ajouter une promotion" class="btn generation_element_to_change btn-success" style="display: inline-block;">
+                            Valider
+                        </button>
+                    </div>
+                </div>
+
+                <div id="promotionList">
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <div class="col-md-7">
+            <section class="promotionListPanel">
+                <h1>Liste des promotions</h1>
+
+                <div class="newPromo row">
                     <div class="col-md-6">
                         <input id="promotionName" class="form-control" placeholder="Nouvelle promotion">
                     </div>
@@ -47,12 +73,9 @@
 
                 </div>
 
-                Test
-                test
-                test
             </section>
-
         </div>
+
     </div>
 </div>
 
@@ -80,9 +103,20 @@
         }).success( function(content){
             console.log(content);
 			console.log(content.promos[1].label);
+            content=parseList(content);
             $("#promotionList").html(content);
         });
     });
+
+    function parseList(content){
+        listParsed = "<ul>";
+
+        for(i=0; i<content.promos.length; i++){
+            listParsed += "<li>"+content.promos[i].label+"</li>";
+        }
+        listParsed += "</ul>";
+        return listParsed;
+    }
 </script>
 
 <?php end_content_for();?>

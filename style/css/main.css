@@ -74,6 +74,40 @@ nav a{
     border-bottom: solid 1px #dedede;
 }
 
+.newPromo{
+    display: block;
+    background-co: #fff;
+
+    height: auto;
+    margin-bottom: 2em;
+}
+
+.promotionListPanel ul{
+    display: block;
+    list-style: none;
+
+    width: 100%;
+
+    margin: 1em 0 0 0;
+    padding: 0;
+}
+
+.promotionListPanel ul li{
+    display: inline-block;
+
+    width: inherit;
+    height: 3em;
+    padding: 1em 2em;
+
+    text-align: center;
+}
+    .promotionListPanel ul li:nth-child(2n){
+        background-color: #fff;
+    }
+    .promotionListPanel ul li:nth-child(2n+1){
+        background-color: #efefef;
+    }
+
 
 /*------------------------------------------------------------- width% -------------------------------------------------------------------*/
 

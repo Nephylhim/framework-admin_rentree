@@ -11,11 +11,6 @@ class Data
 	private $date = "";
 	private $ip = "";
 
-	public function __construct($id = null)
-	{
-
-	}
-
 	/**
 	 * @return int
 	 */
@@ -161,12 +156,163 @@ class Data
 	}
 
 	public function create()
-	{}
+	{
+		global $bdd;
+
+		$bdd->beginTransaction();
+
+		$sql = "INSERT INTO data (id, identifiant, nom_fils, prenom_fils, ddn_fils, tel_mobile, courriel, date, ip)
+				VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+		$rq = $bdd->prepare($sql);
+
+		$ok = $rq->execute(array(
+			$this->getIdentifiant(),
+			$this->getNomFils(),
+			$this->getPrenomFils(),
+			$this->getDdnFils(),
+			$this->getTelMobile(),
+			$this->getCourriel(),
+			$this->getDate(),
+			$this->getIp()
+		));
+
+		if(!$ok)
+		{
+			$bdd->rollBack();
+			return false;
+		}
+
+		$sql = "SELECT LAST_INSERT_ID() AS id";
+
+		$rq = $bdd->prepare($sql);
+
+		$ok = $rq->execute();
+
+		if(!$ok)
+		{
+			$bdd->rollBack();
+			return false;
+		}
+
+		$data = $rq->fetch();
+		$this->setId($data['id']);
+
+		$bdd->commit();
+		return true;
+	}
 
 	public function update()
-	{}
+	{
+		global $bdd;
+
+		$sql = "UPDATE data
+				SET identifiant = ?,
+					nom_fils = ?,
+					prenom_fils = ?,
+					ddn_fils = ?,
+					tel_mobile = ?,
+					courriel = ?
+				WHERE id = ?";
+
+		$rq = $bdd->prepare($sql);
+
+		return $rq->execute(array(
+			$this->getIdentifiant(),
+			$this->getNomFils(),
+			$this->getPrenomFils(),
+			$this->getDdnFils(),
+			$this->getTelMobile(),
+			$this->getCourriel(),
+			$this->getId()
+		));
+	}
+
+	public function delete()
+	{
+		global $bdd;
+
+		$sql = "DELETE FROM data
+				WHERE id = ?";
+
+		$rq = $bdd->prepare($sql);
+
+		return $rq->execute(array(
+			$this->getId()
+		));
+	}
 
 	public static function getAllDatas()
-	{}
+	{
+		global $bdd;
+
+		$sql = "SELECT *
+				FROM data";
+
+		$rq = $bdd->prepare($sql);
+
+		$rq->execute();
+
+		$datas = [];
+
+		while($dat = $rq->fetch())
+		{
+			$data = new Data();
+			$data->setId($dat["id"]);
+			$data->setIdentifiant($dat["identifiant"]);
+			$data->setNomFils($dat["nom_fils"]);
+			$data->setPrenomFils($dat["prenom_fils"]);
+			$data->setDdnFils($dat["ddn_fils"]);
+			$data->setTelMobile($dat["tel_mobile"]);
+			$data->setCourriel($dat["courriel"]);
+			$data->setDate($dat["date"]);
+			$data->setIp($dat["ip"]);
+
+			$datas[] = $data;
+		}
+
+		return $datas;
+	}
+
+	public static function getDataById($id)
+	{
+		global $bdd;
+
+		$sql = "SELECT *
+				FROM data
+				WHERE id = ?";
+
+		$rq = $bdd->prepare($sql);
+
+		$rq->execute(array(
+			$id
+		));
+
+		$dat = $rq->fetch();
+
+		$data = new Data();
+		$data->setId($dat["id"]);
+		$data->setIdentifiant($dat["identifiant"]);
+		$data->setNomFils($dat["nom_fils"]);
+		$data->setPrenomFils($dat["prenom_fils"]);
+		$data->setDdnFils($dat["ddn_fils"]);
+		$data->setTelMobile($dat["tel_mobile"]);
+		$data->setCourriel($dat["courriel"]);
+		$data->setDate($dat["date"]);
+		$data->setIp($dat["ip"]);
+
+		return $data;
+	}
+
+	public static function deleteAllDatas()
+	{
+		global $bdd;
+
+		$sql = "DELETE FROM data";
+
+		$rq = $bdd->prepare($sql);
+
+		return $rq->execute();
+	}
 }
 ?>

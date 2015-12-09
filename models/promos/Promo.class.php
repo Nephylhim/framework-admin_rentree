@@ -80,11 +80,11 @@ class Promo
 
 		$rq = $bdd->prepare($sql);
 
-		$result = $rq->execute(array(
+		$ok = $rq->execute(array(
 			$this->getPromo()
 		));
 
-		if($result == false)
+		if(!$ok)
 		{
 			$bdd->rollBack();
 			return false;
@@ -94,8 +94,8 @@ class Promo
 		$files = Files::getAllDocumentByPromo($this->getPromo());
 		foreach($files as $file)
 		{
-			$result = $file->delete();
-			if($result == false)
+			$ok = $file->delete();
+			if(!$ok)
 			{
 				$bdd->rollBack();
 				return false;
@@ -112,6 +112,7 @@ class Promo
 
 		$sql = "SELECT *
 				FROM promo_label";
+
 		$rq = $bdd->prepare($sql);
 
 		$rq->execute();
@@ -140,7 +141,10 @@ class Promo
 
 		$rq = $bdd->prepare($sql);
 
-		$rq->execute(array($promoToSearch));
+		$rq->execute(array(
+			$promoToSearch
+		));
+
 		$data = $rq->fetch();
 
 		$promo = new Promo();

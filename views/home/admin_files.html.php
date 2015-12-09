@@ -54,13 +54,7 @@
                         <input id="promotionName" class="form-control" placeholder="Nouvelle promotion">
                     </div>
                     <div class="col-md-3">
-                        <select id="ANumber" class="form-control">
-                            <option>_A1 </option>
-                            <option>_A2 </option>
-                            <option>_A3 </option>
-                            <option>_A4 </option>
-                            <option>_A5 </option>
-                        </select>
+
                     </div>
                     <div class="col-md-3">
                         <button id="bouton_AjouterPromo" title="Ajouter une promotion" class="btn generation_element_to_change btn-success" style="display: inline-block;">
@@ -69,7 +63,7 @@
                     </div>
                 </div>
 
-                <div id="promotionList">
+                <div id="test">
 
                 </div>
 
@@ -80,6 +74,33 @@
 </div>
 
 
+        <!-- Modal Modif promo-->
+                    <div class="modal fade" id="modifPromo" role="dialog" >
+                      <div class="modal-dialog">
+
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Modification de promotion</h4>
+                          </div>
+                          <div class="modal-body">
+                              <p>Vous pouvez modifier le nom de la promotion</p>
+                              <div class="row">
+                              <div class=" col-md-5 "><input  id="promotionNameInput" class="form-control"></div>
+                              <div class=" col-md-5 col-md-offset-1">
+                                  <input  id="promotionLabelInput" class="form-control">
+                              </div>
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                          <button id="editPromo" class="btn btn-success" data-dismiss="modal" aria-hidden="true">Sauvegarder</button>
+                          <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
+
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
 
 <?php end_content_for();?>
 
@@ -109,13 +130,19 @@
     });
 
     function parseList(content){
-        listParsed = "<ul>";
+        listParsed = '<ul><li id="tous">Commun à toutes les promos</li><li id="isole">Isolés</li>';
 
         for(i=0; i<content.promos.length; i++){
-            listParsed += "<li>"+content.promos[i].label+"</li>";
+            listParsed += '<li id="'+content.promos[i].promo+'" onclick="showPopupPromo(event)" >'+content.promos[i].label+"</li>";
         }
         listParsed += "</ul>";
         return listParsed;
+    }
+
+    function showPopupPromo(event){
+        var promoId = this.id;
+        console.log(promoId);
+        $("#modifPromo").modal({backdrop: true});
     }
 </script>
 

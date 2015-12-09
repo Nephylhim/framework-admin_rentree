@@ -136,12 +136,6 @@
 <?php content_for('script'); ?>
 
 <script>
-    /*$.ajax({
-        method: "GET",
-        url: "?/promos/get";
-    }).done( function( content ){
-        $("#promotionList").html("Coucou !!!");
-    });*/
 
     $(document).ready(function(){
         console.log( "Appel Ajax" );

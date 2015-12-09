@@ -15,8 +15,8 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-1">
 
-            <a href="?/admin_files" class="button-m">Fichiers</a>
-            <a href="?/admin_files" class="button-m">Promos</a>
+            <a href="?/" class="button-m">Accueil</a>
+            <a href="?/admin_files" class="button-m">Fichiers / Promos</a>
             <a href="?/admin_datas" class="button-m">Datas</a>
 
         </div>

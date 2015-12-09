@@ -86,10 +86,16 @@
                           <div class="modal-body">
                               <p>Vous pouvez modifier le nom de la promotion</p>
                               <div class="row">
-                              <div class=" col-md-5 "><input  id="promotionNameInput" class="form-control"></div>
-                              <div class=" col-md-5 col-md-offset-1">
-                                  <input  id="promotionLabelInput" class="form-control">
+                                  <div class=" col-md-5 "><input  id="promotionNameInput" class="form-control"></div>
+                                  <div class=" col-md-6 col-md-offset-1">
+                                      <input  id="promotionLabelInput" class="form-control">
+                                  </div>
                               </div>
+                              <br>
+                              <div class="row">
+                                  <div class="col-md-2 col-md-offset-5">
+                                      <button class="btn btn-danger" data-dismiss="modal" onclick="showDelPromo(this)">Supprimer</button>
+                                  </div>
                               </div>
                           </div>
                           <div class="modal-footer">
@@ -101,6 +107,29 @@
 
                       </div>
                     </div>
+
+        <!-- Modal Suppr promo-->
+                    <div class="modal fade" id="delPromo" role="dialog" >
+                      <div class="modal-dialog">
+
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Suppression de promotion</h4>
+                          </div>
+                          <div class="modal-body">
+                              <p>Êtes-vous sur de vouloir supprimer la promotion <span id="disPromoLabel"></span> ?</p>
+                          </div>
+                          <div class="modal-footer">
+                          <button id="editPromo" class="btn btn-success" data-dismiss="modal" aria-hidden="true">Supprimer</button>
+                          <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
+
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
 
 <?php end_content_for();?>
 
@@ -133,16 +162,24 @@
         listParsed = '<ul><li id="tous">Commun à toutes les promos</li><li id="isole">Isolés</li>';
 
         for(i=0; i<content.promos.length; i++){
-            listParsed += '<li id="'+content.promos[i].promo+'" onclick="showPopupPromo(event)" >'+content.promos[i].label+"</li>";
+            listParsed += '<li id="'+content.promos[i].promo+'" onclick="showPopupPromo(this)" >'+content.promos[i].label+"</li>";
         }
         listParsed += "</ul>";
         return listParsed;
     }
 
-    function showPopupPromo(event){
-        var promoId = this.id;
-        console.log(promoId);
+    function showPopupPromo(eventSrc){
+        var promoId = eventSrc.id;
+        var promoName = $("#"+promoId).html();
+        $("#promotionNameInput").val(promoId);
+        $("#promotionLabelInput").val(promoName);
         $("#modifPromo").modal({backdrop: true});
+    }
+
+    function showDelPromo(eventSrc, eventPrev){
+        promoName = $("#promotionLabelInput").val();
+        $("#disPromoLabel").html( promoName );
+        $("#delPromo").modal({backdrop: true});
     }
 </script>
 

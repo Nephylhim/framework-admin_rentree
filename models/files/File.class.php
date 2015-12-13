@@ -1,14 +1,11 @@
 <?php
-class Files
+class Files implements JsonSerializable
 {
 	private $id = -1;
 	private $rang = -1;
 	private $promo = "";
 	private $libelle = "";
 	private $fichier = "";
-
-	public function __construct($id = null)
-	{}
 
 	/**
 	 * @return int
@@ -99,10 +96,23 @@ class Files
 	public function delete()
 	{}
 
-	public static function getAllDocumentByPromo($promo)
+	public static function getAllDocumentByPromo($promo)//ORDER BY ...
+	{}
+
+	public static function getAllDocumentsById($id)
 	{}
 
 	public static function deleteAllDocuments()
 	{}
+
+	function jsonSerialize()
+	{
+		return [
+			"id" => $this->getId(),
+			"rang" => $this->getRang(),
+			"promo" => $this->getPromo(),
+			"libelle" => $this->getLibelle()
+		];
+	}
 }
 ?>

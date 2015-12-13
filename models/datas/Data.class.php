@@ -1,5 +1,5 @@
 <?php
-class Data
+class Data implements JsonSerializable
 {
 	private $id = -1;
 	private $identifiant = "";
@@ -314,5 +314,21 @@ class Data
 
 		return $rq->execute();
 	}
+
+	public function jsonSerialize()
+	{
+		return [
+			"id" => $this->getId(),
+			"identifiant" => $this->getIdentifiant(),
+			"nom_fils" => $this->getNomFils(),
+			"prenom_fils" => $this->getPrenomFils(),
+			"ddn_fils" => $this->getDdnFils(),
+			"tel_mobile" => $this->getTelMobile(),
+			"couriel" => $this->getCourriel(),
+			"date" => $this->getDate(),
+			"ip" => $this->getIp()
+		];
+	}
+
 }
 ?>

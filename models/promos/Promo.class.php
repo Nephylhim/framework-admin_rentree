@@ -175,7 +175,7 @@ class Promo implements JsonSerializable
 		return $promo;
 	}
 
-	function jsonSerialize()
+	public function jsonSerialize()
 	{
 		return [
 			"promo" => $this->getPromo(),

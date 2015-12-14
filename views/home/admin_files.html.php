@@ -186,7 +186,7 @@
         var urlStr = '/promos/add/'+name+'/'+label;
         console.log("Name : "+name+"  |  Label : "+label+"  |  url : "+urlStr);
         $.ajax({
-            url: urlStr,
+            url: "<?=url_for('/promos/add'); ?>/"+name+"/"+label,
             method: "GET",
         }).success( refresh_promo() );
     }

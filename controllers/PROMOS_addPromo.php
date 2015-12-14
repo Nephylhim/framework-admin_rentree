@@ -5,11 +5,14 @@ function addPromo(){
     $promo = params(0);
     $label = params(1);
 
-    set("promos", Promo::setPromo($promo));
-    set("promos", Promo::setLabel($label));
-	set("promos", Promo::create());
+    $newPromo = new Promo();
+    $newPromo->setPromo($promo);
+	$newPromo->setLabel($label);
+	$status = $newPromo->create();
 
-    return render("Ok");
+	set("status", $status);
+
+    return render("status.json.php");
 }
 
 ?>

@@ -160,13 +160,13 @@
         listParsed = '<ul><li id="tous">Commun à toutes les promos</li><li id="isole">Isolés</li>';
 
         for(i=0; i<content.promos.length; i++){
-            listParsed += '<li id="'+content.promos[i].promo+'" onclick="showPopupPromo(this)" >'+content.promos[i].label+"</li>";
+            listParsed += '<li id="'+content.promos[i].promo+'" onclick="showModifPromo(this)" >'+content.promos[i].label+"</li>";
         }
         listParsed += "</ul>";
         return listParsed;
     }
 
-    function showPopupPromo(eventSrc){
+    function showModifPromo(eventSrc){
         var promoId = eventSrc.id;
         var promoName = $("#"+promoId).html();
         $("#promotionNameInput").val(promoId);

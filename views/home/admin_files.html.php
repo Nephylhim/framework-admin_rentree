@@ -25,13 +25,13 @@
 
                 <div class="newPromo row">
                     <div class="col-md-5">
-                        <input id="promotionName" class="form-control" placeholder="Nouvelle promotion : nom"/>
+                        <input id="newPromoName" class="form-control" placeholder="Nouvelle promotion : nom"/>
                     </div>
                     <div class="col-md-5">
-                        <input id="promotionLabel" class="form-control" placeholder="Nouvelle promotion : label"/>
+                        <input id="newPromoLbl" class="form-control" placeholder="Nouvelle promotion : label"/>
                     </div>
                     <div class="col-md-2">
-                        <button id="bouton_AjouterPromo" title="Ajouter une promotion" class="btn generation_element_to_change btn-success" style="display: inline-block;">
+                        <button id="newPromoBtn" title="Ajouter une promotion" class="btn btn-success" style="display: inline-block;" onclick="newPromo()">
                             Valider
                         </button>
                     </div>
@@ -178,6 +178,17 @@
         promoName = $("#promotionLabelInput").val();
         $("#disPromoLabel").html( promoName );
         $("#delPromo").modal({backdrop: true});
+    }
+
+    function newPromo(){
+        var name = $("#newPromoName").val();
+        var label = $("#newPromoLbl").val();
+        var urlStr = '/promos/add/'+name+'/'+label;
+        console.log("Name : "+name+"  |  Label : "+label+"  |  url : "+urlStr);
+        $.ajax({
+            url: urlStr,
+            method: "GET",
+        }).success( refresh_promo() );
     }
 </script>
 

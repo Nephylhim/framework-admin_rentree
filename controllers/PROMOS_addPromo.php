@@ -8,6 +8,8 @@ function addPromo(){
     set("promos", Promo::setPromo($promo));
     set("promos", Promo::setLabel($label));
 	set("promos", Promo::create());
+
+    return render("Ok");
 }
 
 ?>

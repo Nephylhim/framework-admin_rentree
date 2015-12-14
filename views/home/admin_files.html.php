@@ -157,7 +157,7 @@
     }
 
     function parseList(content){
-        listParsed = '<ul><li id="tous">Commun à toutes les promos</li><li id="isole">Isolés</li>';
+        listParsed = '<ul><li id="tous">Commun à toutes les promos</li>';
 
         for(i=0; i<content.promos.length; i++){
             listParsed += '<li id="'+content.promos[i].promo+'" onclick="showModifPromo(this)" >'+content.promos[i].label+"</li>";

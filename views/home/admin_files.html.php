@@ -140,6 +140,10 @@
     $(document).ready(function(){
         console.log( "Appel Ajax" );
 
+        refresh_promo();
+    });
+
+    function refresh_promo(){
         $.ajax({
             url: "<?=url_for('/promos/get'); ?>",
             method: "GET",
@@ -150,7 +154,7 @@
             content=parseList(content);
             $("#promotionList").html(content);
         });
-    });
+    }
 
     function parseList(content){
         listParsed = '<ul><li id="tous">Commun à toutes les promos</li><li id="isole">Isolés</li>';

@@ -1,5 +1,5 @@
 <?php
-class Promo
+class Promo implements JsonSerializable
 {
 	private $promo = "";
 	private $label = "";
@@ -174,5 +174,14 @@ class Promo
 
 		return $promo;
 	}
+
+	public function jsonSerialize()
+	{
+		return [
+			"promo" => $this->getPromo(),
+			"label" => $this->getLabel()
+		];
+	}
+
 }
 ?>

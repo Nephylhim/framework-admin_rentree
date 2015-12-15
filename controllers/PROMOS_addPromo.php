@@ -2,8 +2,8 @@
 require_once(dirname(__FILE__)."/../models/model_class_includes.php");
 
 function addPromo(){
-    $promo = params(0);
-    $label = params(1);
+    $promo = params("promo");
+    $label = params("label");
 
     $newPromo = new Promo();
     $newPromo->setPromo($promo);

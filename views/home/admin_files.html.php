@@ -186,6 +186,7 @@
 			console.log(content.promos[1].label);
             content=parseList(content);
             $("#promotionList").html(content);
+            $("#promotionList").children("ul").children("li").children(".listBtn").hide();
         });
     }
 
@@ -193,25 +194,28 @@
         listParsed = '<ul><li id="tous">Commun à toutes les promos</li>';
 
         for(i=0; i<content.promos.length; i++){
-            listParsed += '<li id="'+content.promos[i].promo+'" onclick="activePromo(this)" >'+content.promos[i].label
-                +'<br/><button id="modifPromoModalBtn" title="Modifier une promotion" class="btn btn-primary" aria-hidden="true" onclick="showModifPromoModal(this)">Modifier</button>'
-                +'<button id="delPromoModalBtn" title="Supprimer une promotion" class="btn btn-danger" aria-hidden="true" onclick="showDelPromoModal(this)">Supprimer</button>'
-                +'</li>';
+            listParsed += '<li id="'+content.promos[i].promo+'" onclick="activePromo(this)" >'+content.promos[i].label+'<div class="row listBtn" aria-hidden="true">'
+                +'<div class="col-md-6 right"><button id="modifPromoModalBtn" title="Modifier une promotion" class="btn btn-primary" onclick="showModifPromoModal(this)">Modifier</button></div>'
+                +'<div class="col-md-6 left"><button id="delPromoModalBtn" title="Supprimer une promotion" class="btn btn-danger" onclick="showDelPromoModal(this)">Supprimer</button></div>'
+                +'</div></li>';
         }
         listParsed += "</ul>";
         return listParsed;
     }
 
     function activePromo(eventSrc){
+        var promoId = $("#promotionNameInput").val();
+        if(promoId != ""){
+            $("#"+promoId).children(".listBtn").hide();
+        }
 
-
-        var promoId = eventSrc.id;
-        var promoName = $("#"+promoId).html();
+        promoId = eventSrc.id;
+        var promoLabel = $("#"+promoId).html();
         $("#promotionNameInput").val(promoId);
-        $("#promotionLabelInput").val(promoName);
+        $("#promotionLabelInput").val(promoLabel);
 
-        $(promoId).children("#modifPromoModalBtn").setAttribute("aria-hidden", "false");
-        $(promoId).children("#delPromoModalBtn").setAttribute("aria-hidden", "false");
+        //$("#"+promoId).children(".listBtn").attr("aria-hidden", "false");
+        $("#"+promoId).children(".listBtn").show();
     }
 
     function showNewPromoModal(eventSrc){
@@ -223,8 +227,8 @@
     }
 
     function showDelPromoModal(eventSrc){
-        promoName = $("#promotionLabelInput").val();
-        $("#disPromoLabel").html( promoName );
+        promoLabel = $("#promotionLabelInput").val();
+        $("#disPromoLabel").html( promoLabel );
         $("#delPromoModal").modal({backdrop: true});
     }
 

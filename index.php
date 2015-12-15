@@ -16,8 +16,7 @@ dispatch_get("/files/get/:id", "getFile");//get file
 dispatch_get("/files/get/promo/:promo", "getFile");//get files associated with promo
 dispatch_post("/files/add", "addFile");
 dispatch_post("/files/del", "delFile");
-dispatch_post("/files/lnk", "lnkFile");
-dispatch_post("/files/mv", "mvFile");
+dispatch_post("/files/upd/:id/:promo/:rang/:libelle", "updFile");//upd file
 
 dispatch_get("/datas/get", "getData");
 dispatch_post("/datas/upd", "updData");

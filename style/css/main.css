@@ -76,17 +76,21 @@ nav a{
     overflow: auto;
 }
 
-.promotionListPanel{
+.listPanel{
     width: 100%;
 
     background-color: white;
 }
 
-.promotionListPanel h1{
+.listPanel h1{
     display: inline-block;
     width: 100%;
 
     border-bottom: solid 1px #dedede;
+}
+
+.promotionListPanel{
+
 }
 
 .newPromo{
@@ -126,6 +130,40 @@ nav a{
         background-color: #dddddd;
     }
 
+
+.fileListPanel{
+
+}
+
+
+.fileListPanel ul{
+    display: block;
+    list-style: none;
+
+    width: 100%;
+
+    margin: 1em 0 0 0;
+    padding: 0;
+}
+
+.fileListPanel ul li{
+    display: block;
+
+    width: inherit;
+    height: 5em;
+    padding: 1em 2em;
+
+    text-align: center;
+}
+    .fileListPanel ul li:nth-child(2n){
+        background-color: #fff;
+    }
+    .fileListPanel ul li:nth-child(2n+1){
+        background-color: #efefef;
+    }
+    .fileListPanel ul li:hover{
+        background-color: #dddddd;
+    }
 
 /*------------------------------------------------------------- width% -------------------------------------------------------------------*/
 

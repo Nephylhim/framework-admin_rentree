@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-md-5">
 
-            <section class="promotionListPanel">
+            <section class="promotionListPanel listPanel">
                 <h1>Liste des promotions</h1>
 
                 <div class="row">
@@ -50,7 +50,7 @@
         </div>
 
         <div class="col-md-7">
-            <section class="fileListPanel">
+            <section class="fileListPanel listPanel">
                 <h1>Liste des fichiers</h1>
 
                 <div id="fileList" class="limitedHeight">
@@ -155,6 +155,7 @@
 
     $(document).ready(function(){
         refresh_promo();
+        refreshFiles(-1);
     });
 
 /*------------------------------------------------------------------ Promos -----------------------------------------------------------------------*/
@@ -241,12 +242,13 @@
 
 /*------------------------------------------------------------------- Files -----------------------------------------------------------------------*/
 
-    function refreshFiles(){
+    function refreshFiles(wyw){
         $.ajax({
-            url: "<?=url_for('/files/get'); ?>",
+            url: "<?=url_for('/files/get'); ?>/promo/"+wyw,
             method: "GET",
             dataType: "json"
         }).success( function(content){
+            console.log(content);
             content=parseFileList(content);
             $("#fileList").html(content);
             $("#fileList").children("ul").children("li").children(".listBtn").hide();
@@ -256,7 +258,7 @@
     function parseFileList(content){
         listParsed = '<ul>';
 
-        for(i=0; i<content.file.length; i++){
+        for(i=0; i<content.files.length; i++){
             listParsed += '<li id="'+content.files[i].id+'" onclick="activeFile(this)" >'+content.files[i].libelle+'<div class="row listBtn" aria-hidden="true">'
                 +'<div class="col-md-6 right"><button id="modifPromoModalBtn" title="Modifier une promotion" class="btn btn-primary" onclick="showModifPromoModal(this)">Modifier</button></div>'
                 +'<div class="col-md-6 left"><button id="delPromoModalBtn" title="Supprimer une promotion" class="btn btn-danger" onclick="showDelPromoModal(this)">Supprimer</button></div>'

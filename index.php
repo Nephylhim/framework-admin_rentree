@@ -18,9 +18,12 @@ dispatch_post("/files/add/:promo/:rang/:libelle", "addFile");//add a file
 dispatch_post("/files/del/:id", "delFile");//delete a file
 dispatch_post("/files/upd/:id/:promo/:rang/:libelle", "updFile");//upd file
 
-dispatch_get("/datas/get", "getData");
-dispatch_post("/datas/upd", "updData");
-dispatch_get("/datas/xtr", "xtrData");
+dispatch_get("/datas/get/all", "getData");//gat all data
+dispatch_get("/datas/get/:id", "getData");//get a data
+dispatch_get("/datas/xtr", "xtrData");//export datas
+dispatch_post("/datas/upd/:id/:identifiant/:nom_fils/:prenom_fils/:ddn_fils/:tel_mobile/:courriel", "updData");//update data
+dispatch_post("/datas/del/all", "delData");//delete all datas
+dispatch_post("/datas/del/:id", "delData");//delete one data
 
 run();
 ?>

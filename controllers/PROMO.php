@@ -4,7 +4,8 @@ require_once(dirname(__FILE__)."/../models/model_class_includes.php");
 function getPromo()
 {
     $promo = params("promo");
-	if ($promo == null)
+
+	if($promo == null)
 	{
 		set("promos", Promo::getAllPromos());
 	}
@@ -53,6 +54,7 @@ function updPromo()
 
 	$promoToUpd = Promo::getPromoByPromo($promo);
 	$promoToUpd->setLabel($newLabel);
+
 	$status = $promoToUpd->update();
 
 	set("status", $status);

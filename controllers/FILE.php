@@ -36,6 +36,7 @@ function updFile()
 	$file->setPromo($promo);
 	$file->setRang($rang);
 	$file->setLibelle($libelle);
+
 	$status = $file->update();
 
 	set("status", $status);

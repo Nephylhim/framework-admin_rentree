@@ -154,13 +154,13 @@
 <script>
 
     $(document).ready(function(){
-        refresh_promo();
+        refreshPromos();
         refreshFiles(-1);
     });
 
 /*------------------------------------------------------------------ Promos -----------------------------------------------------------------------*/
 
-    function refresh_promo(){
+    function refreshPromos(){
         $.ajax({
             url: "<?=url_for('/promos/get'); ?>",
             method: "GET",
@@ -220,7 +220,7 @@
         $.ajax({
             url: "<?=url_for('/promos/add'); ?>/"+name+"/"+label,
             method: "POST",
-        }).success( refresh_promo() );
+        }).success( refreshPromos() );
     }
 
     function delPromo(eventScr){
@@ -228,7 +228,7 @@
         $.ajax({
             url: "<?=url_for('/promos/del'); ?>/"+name,
             method: "POST",
-        }).success( refresh_promo() );
+        }).success( refreshPromos() );
     }
 
     function modifPromo(eventSrc){
@@ -237,7 +237,7 @@
         $.ajax({
             url: "<?=url_for('/promos/upd'); ?>/"+name+"/"+label,
             method: "POST",
-        }).success( refresh_promo() );
+        }).success( refreshPromos() );
     }
 
 /*------------------------------------------------------------------- Files -----------------------------------------------------------------------*/

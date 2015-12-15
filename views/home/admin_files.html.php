@@ -41,7 +41,7 @@
                     </div>-->
                 </div>
 
-                <div id="promotionList">
+                <div id="promotionList" class="limitedHeight">
 
                 </div>
 

@@ -96,11 +96,6 @@
                                   </div>
                               </div>
                               <br>
-                              <div class="row">
-                                  <div class="col-md-2 col-md-offset-5">
-                                      <button class="btn btn-danger" data-dismiss="modal" onclick="showDelPromoModal(this)">Supprimer</button>
-                                  </div>
-                              </div>
                           </div>
                           <div class="modal-footer">
                           <button id="editPromo" class="btn btn-success" data-dismiss="modal" aria-hidden="true">Sauvegarder</button>

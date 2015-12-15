@@ -242,8 +242,30 @@
 /*------------------------------------------------------------------- Files -----------------------------------------------------------------------*/
 
     function refreshFiles(){
-
+        $.ajax({
+            url: "<?=url_for('/files/get'); ?>",
+            method: "GET",
+            dataType: "json"
+        }).success( function(content){
+            content=parseFileList(content);
+            $("#fileList").html(content);
+            $("#fileList").children("ul").children("li").children(".listBtn").hide();
+        });
     }
+
+    function parseFileList(content){
+        listParsed = '<ul>';
+
+        for(i=0; i<content.file.length; i++){
+            listParsed += '<li id="'+content.files[i].id+'" onclick="activeFile(this)" >'+content.files[i].libelle+'<div class="row listBtn" aria-hidden="true">'
+                +'<div class="col-md-6 right"><button id="modifPromoModalBtn" title="Modifier une promotion" class="btn btn-primary" onclick="showModifPromoModal(this)">Modifier</button></div>'
+                +'<div class="col-md-6 left"><button id="delPromoModalBtn" title="Supprimer une promotion" class="btn btn-danger" onclick="showDelPromoModal(this)">Supprimer</button></div>'
+                +'</div><div class="hidden"><div class="rang">'+content.files[i].rang+'</div><div class="promo">'+content.files[i].promo+'</div></div></li>';
+        }
+        listParsed += "</ul>";
+        return listParsed;
+    }
+
 </script>
 
 <?php end_content_for();?>

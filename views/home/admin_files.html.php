@@ -125,7 +125,7 @@
                               <p>Êtes-vous sur de vouloir supprimer la promotion <span id="disPromoLabel"></span> ?</p>
                           </div>
                           <div class="modal-footer">
-                          <button id="editPromo" class="btn btn-success" data-dismiss="modal" aria-hidden="true">Supprimer</button>
+                          <button id="delPromoBtn" class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="delPromo(this)">Supprimer</button>
                           <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
 
                           </div>
@@ -236,9 +236,16 @@
     function newPromo(){
         var name = $("#newPromoName").val();
         var label = $("#newPromoLbl").val();
-        var urlStr = '/promos/add/'+name+'/'+label;
         $.ajax({
             url: "<?=url_for('/promos/add'); ?>/"+name+"/"+label,
+            method: "POST",
+        }).success( refresh_promo() );
+    }
+
+    function delPromo(eventScr){
+        var name = $("#promotionNameInput").val();
+        $.ajax({
+            url: "<?=url_for('/promos/del'); ?>/"+name,
             method: "POST",
         }).success( refresh_promo() );
     }

@@ -172,11 +172,6 @@
 
     $(document).ready(function(){
         refresh_promo();
-
-        for(var i=0; i<50; i++){
-            console.log("Keine Problem !!!");
-            console.log("");
-        }
     });
 
     function refresh_promo(){

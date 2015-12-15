@@ -90,7 +90,9 @@
                           <div class="modal-body">
                               <p>Vous pouvez modifier le nom de la promotion</p>
                               <div class="row">
-                                  <div class=" col-md-5 "><input  id="promotionNameInput" class="form-control"></div>
+                                  <div class=" col-md-5 ">
+                                      <input  id="promotionNameInput" class="form-control" disabled>
+                                  </div>
                                   <div class=" col-md-6 col-md-offset-1">
                                       <input  id="promotionLabelInput" class="form-control">
                                   </div>

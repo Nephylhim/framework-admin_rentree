@@ -24,21 +24,21 @@
                 <h1>Liste des promotions</h1>
 
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-12 center">
                         <button id="newPromoModalBtn" title="Ajouter une promotion" class="btn btn-primary" style="display: inline-block;" onclick="showNewPromoModal(this)">
                             Ajouter
                         </button>
                     </div>
-                    <div class="col-md-4">
+                    <!--<div class="col-md-4">
                         <button id="modifPromoModalBtn" title="Modifier une promotion" class="btn btn-primary" style="display: inline-block;" onclick="showModifPromoModal(this)">
                             Modifier
                         </button>
-                    </div>
-                    <div class="col-md-4">
+                    </div>-->
+                    <!--<div class="col-md-6 center">
                         <button id="newPromoBtn" title="Supprimer une promotion" class="btn btn-danger" style="display: inline-block;" onclick="showDelPromoModal(this)">
                             Supprimer
                         </button>
-                    </div>
+                    </div>-->
                 </div>
 
                 <div id="promotionList">
@@ -193,10 +193,25 @@
         listParsed = '<ul><li id="tous">Commun à toutes les promos</li>';
 
         for(i=0; i<content.promos.length; i++){
-            listParsed += '<li id="'+content.promos[i].promo+'" onclick="showModifPromoModal(this)" >'+content.promos[i].label+"</li>";
+            listParsed += '<li id="'+content.promos[i].promo+'" onclick="activePromo(this)" >'+content.promos[i].label
+                +'<br/><button id="modifPromoModalBtn" title="Modifier une promotion" class="btn btn-primary" aria-hidden="true" onclick="showModifPromoModal(this)">Modifier</button>'
+                +'<button id="delPromoModalBtn" title="Supprimer une promotion" class="btn btn-danger" aria-hidden="true" onclick="showDelPromoModal(this)">Supprimer</button>'
+                +'</li>';
         }
         listParsed += "</ul>";
         return listParsed;
+    }
+
+    function activePromo(eventSrc){
+
+
+        var promoId = eventSrc.id;
+        var promoName = $("#"+promoId).html();
+        $("#promotionNameInput").val(promoId);
+        $("#promotionLabelInput").val(promoName);
+
+        $(promoId).children("#modifPromoModalBtn").setAttribute("aria-hidden", "false");
+        $(promoId).children("#delPromoModalBtn").setAttribute("aria-hidden", "false");
     }
 
     function showNewPromoModal(eventSrc){
@@ -204,14 +219,10 @@
     }
 
     function showModifPromoModal(eventSrc){
-        var promoId = eventSrc.id;
-        var promoName = $("#"+promoId).html();
-        $("#promotionNameInput").val(promoId);
-        $("#promotionLabelInput").val(promoName);
         $("#modifPromoModal").modal({backdrop: true});
     }
 
-    function showDelPromoModal(eventSrc, eventPrev){
+    function showDelPromoModal(eventSrc){
         promoName = $("#promotionLabelInput").val();
         $("#disPromoLabel").html( promoName );
         $("#delPromoModal").modal({backdrop: true});

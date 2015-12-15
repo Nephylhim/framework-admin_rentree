@@ -24,3 +24,22 @@ function getFile()
 	header('Content-Type: application/json');
 	return render("files/getFile.json.php");
 }
+
+function updFile()
+{
+	$id = params("id");
+	$promo = params("promo");
+	$rang = params("rang");
+	$libelle = params("libelle");
+
+	$file = File::getDocumentById($id);
+	$file->setPromo($promo);
+	$file->setRang($rang);
+	$file->setLibelle($libelle);
+	$status = $file->update();
+
+	set("status", $status);
+
+	header('Content-Type: application/json');
+	return render("status.json.php");
+}

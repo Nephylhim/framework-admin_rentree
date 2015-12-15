@@ -171,9 +171,12 @@
 <script>
 
     $(document).ready(function(){
-        console.log( "Appel Ajax" );
-
         refresh_promo();
+
+        for(var i=0; i<50; i++){
+            console.log("Keine Problem !!!");
+            console.log("");
+        }
     });
 
     function refresh_promo(){
@@ -182,8 +185,6 @@
             method: "GET",
             dataType: "json"
         }).success( function(content){
-            console.log(content);
-			console.log(content.promos[1].label);
             content=parseList(content);
             $("#promotionList").html(content);
             $("#promotionList").children("ul").children("li").children(".listBtn").hide();
@@ -236,7 +237,6 @@
         var name = $("#newPromoName").val();
         var label = $("#newPromoLbl").val();
         var urlStr = '/promos/add/'+name+'/'+label;
-        console.log("Name : "+name+"  |  Label : "+label+"  |  url : "+urlStr);
         $.ajax({
             url: "<?=url_for('/promos/add'); ?>/"+name+"/"+label,
             method: "POST",

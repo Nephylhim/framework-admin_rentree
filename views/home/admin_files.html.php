@@ -235,7 +235,7 @@
         console.log("Name : "+name+"  |  Label : "+label+"  |  url : "+urlStr);
         $.ajax({
             url: "<?=url_for('/promos/add'); ?>/"+name+"/"+label,
-            method: "GET",
+            method: "POST",
         }).success( refresh_promo() );
     }
 </script>

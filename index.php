@@ -7,7 +7,7 @@ dispatch("/admin_files", "files");
 dispatch("/admin_datas", "datas");
 
 dispatch_get("/promos/get", "getPromo");
-dispatch_get("/promos/add/:promo/:label", "addPromo");
+dispatch_post("/promos/add/:promo/:label", "addPromo");
 dispatch_delete("/promos/del", "delPromo");
 dispatch_post("/promos/upd", "updPromo");
 

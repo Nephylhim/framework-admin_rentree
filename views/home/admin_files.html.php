@@ -146,6 +146,43 @@
                       </div>
                     </div>
 
+        <!-- Modal Modif promo-->
+                    <div class="modal fade" id="modifFileModal" role="dialog" >
+                      <div class="modal-dialog">
+
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Modification de Fichier</h4>
+                          </div>
+                          <div class="modal-body">
+                              <p>Vous pouvez modifier les éléments du fichier</p>
+                              <div class="row">
+                                  <div class=" col-md-5 ">
+                                      <input  id="fileIdInput" class="form-control" disabled>
+                                  </div>
+                                  <div class=" col-md-6 col-md-offset-1">
+                                      <input  id="fileLibelleInput" class="form-control">
+                                  </div>
+                                  <div class=" col-md-5 ">
+                                      <input  id="filePromoInput" class="form-control" disabled>
+                                  </div>
+                                  <div class=" col-md-6 col-md-offset-1">
+                                      <input  id="fileRankInput" class="form-control">
+                                  </div>
+                              </div>
+                              <br>
+                          </div>
+                          <div class="modal-footer">
+                          <button id="editFile" class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="modifFile(this)">Sauvegarder</button>
+                          <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
+
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
 
 <?php end_content_for();?>
 
@@ -260,12 +297,39 @@
 
         for(i=0; i<content.files.length; i++){
             listParsed += '<li id="'+content.files[i].id+'" onclick="activeFile(this)" >'+content.files[i].libelle+'<div class="row listBtn" aria-hidden="true">'
-                +'<div class="col-md-6 right"><button id="modifPromoModalBtn" title="Modifier une promotion" class="btn btn-primary" onclick="showModifPromoModal(this)">Modifier</button></div>'
-                +'<div class="col-md-6 left"><button id="delPromoModalBtn" title="Supprimer une promotion" class="btn btn-danger" onclick="showDelPromoModal(this)">Supprimer</button></div>'
-                +'</div><div class="hidden"><div class="rang">'+content.files[i].rang+'</div><div class="promo">'+content.files[i].promo+'</div></div></li>';
+                +'<div class="col-md-6 right"><button id="modifFileModalBtn" title="Modifier un fichier" class="btn btn-primary" onclick="showModifFileModal(this)">Modifier</button></div>'
+                +'<div class="col-md-6 left"><button id="delFileModalBtn" title="Supprimer un fichier" class="btn btn-danger" onclick="showDelFileModal(this)">Supprimer</button></div>'
+                +'</div><div class="hidden"><div class="rank">'+content.files[i].rang+'</div><div class="promo">'+content.files[i].promo+'</div></div></li>';
         }
         listParsed += "</ul>";
         return listParsed;
+    }
+
+    function activeFile(eventSrc){
+        var fileId = $("#fileIdInput").val();
+        if(fileId != ""){
+            $("#"+fileId).children(".listBtn").hide();
+        }
+
+        fileId = eventSrc.id;
+        var fileLibelle = $("#"+fileId).clone().children().remove().end().text();
+        var filePromo = $("#"+fileId).children(".promo").text();
+        var fileRank = $("#"+fileId).children(".rank").text();
+        console.log($("#"+fileId));
+        console.log($("#"+fileId).children(".hidden").children(".rank"));
+        console.log(fileRank);
+
+        $("#fileIdInput").val(fileId);
+        $("#fileLibelleInput").val(fileLibelle);
+        $("filePromoInput").val(filePromo);
+        $("fileRankInput").val(fileRank);
+
+        //$("#"+promoId).children(".listBtn").attr("aria-hidden", "false");
+        $("#"+fileId).children(".listBtn").show();
+    }
+
+    function showModifFileModal(eventSrc){
+        $("#modifFileModal").modal({backdrop: true});
     }
 
 </script>

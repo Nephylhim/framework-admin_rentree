@@ -8,6 +8,12 @@ function getFile()
 
 	if($id == null)
 	{
+		if($promo == "-1")
+		{
+
+			$promo = "";
+		}
+
 		set("files", File::getAllDocumentByPromo($promo));
 	}
 	else

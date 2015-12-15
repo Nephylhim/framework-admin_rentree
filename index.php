@@ -12,7 +12,8 @@ dispatch_post("/promos/add/:promo/:label", "addPromo");//add a promo
 dispatch_post("/promos/del/:promo", "delPromo");//delete a promo
 dispatch_post("/promos/upd/:promo/:newLabel", "updPromo");//update promo
 
-dispatch_get("/files/get", "getFile");
+dispatch_get("/files/get/:id", "getFile");//get file
+dispatch_get("/files/get/promo/:promo", "getFile");//get files associated with promo
 dispatch_post("/files/add", "addFile");
 dispatch_post("/files/del", "delFile");
 dispatch_post("/files/lnk", "lnkFile");

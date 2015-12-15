@@ -206,7 +206,7 @@
         }
 
         promoId = eventSrc.id;
-        var promoLabel = $("#"+promoId).html();
+        var promoLabel = $("#"+promoId).clone().children().remove().end().text();
         $("#promotionNameInput").val(promoId);
         $("#promotionLabelInput").val(promoLabel);
 

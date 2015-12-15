@@ -23,16 +23,20 @@
             <section class="promotionListPanel">
                 <h1>Liste des promotions</h1>
 
-                <div class="newPromo row">
-                    <div class="col-md-5">
-                        <input id="newPromoName" class="form-control" placeholder="Nouvelle promotion : nom"/>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button id="newPromoModalBtn" title="Ajouter une promotion" class="btn btn-primary" style="display: inline-block;" onclick="showNewPromoModal(this)">
+                            Ajouter
+                        </button>
                     </div>
-                    <div class="col-md-5">
-                        <input id="newPromoLbl" class="form-control" placeholder="Nouvelle promotion : label"/>
+                    <div class="col-md-4">
+                        <button id="modifPromoModalBtn" title="Modifier une promotion" class="btn btn-primary" style="display: inline-block;" onclick="showModifPromoModal(this)">
+                            Modifier
+                        </button>
                     </div>
-                    <div class="col-md-2">
-                        <button id="newPromoBtn" title="Ajouter une promotion" class="btn btn-success" style="display: inline-block;" onclick="newPromo()">
-                            Valider
+                    <div class="col-md-4">
+                        <button id="newPromoBtn" title="Supprimer une promotion" class="btn btn-danger" style="display: inline-block;" onclick="showDelPromoModal(this)">
+                            Supprimer
                         </button>
                     </div>
                 </div>
@@ -75,7 +79,7 @@
 
 
         <!-- Modal Modif promo-->
-                    <div class="modal fade" id="modifPromo" role="dialog" >
+                    <div class="modal fade" id="modifPromoModal" role="dialog" >
                       <div class="modal-dialog">
 
                         <div class="modal-content">
@@ -94,7 +98,7 @@
                               <br>
                               <div class="row">
                                   <div class="col-md-2 col-md-offset-5">
-                                      <button class="btn btn-danger" data-dismiss="modal" onclick="showDelPromo(this)">Supprimer</button>
+                                      <button class="btn btn-danger" data-dismiss="modal" onclick="showDelPromoModal(this)">Supprimer</button>
                                   </div>
                               </div>
                           </div>
@@ -109,7 +113,7 @@
                     </div>
 
         <!-- Modal Suppr promo-->
-                    <div class="modal fade" id="delPromo" role="dialog" >
+                    <div class="modal fade" id="delPromoModal" role="dialog" >
                       <div class="modal-dialog">
 
                         <div class="modal-content">
@@ -122,6 +126,35 @@
                           </div>
                           <div class="modal-footer">
                           <button id="editPromo" class="btn btn-success" data-dismiss="modal" aria-hidden="true">Supprimer</button>
+                          <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
+
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+        <!-- Modal add promo-->
+                    <div class="modal fade" id="newPromoModal" role="dialog" >
+                      <div class="modal-dialog">
+
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Keine Problem !</h4>
+                          </div>
+                          <div class="modal-body">
+                              <div class="newPromo row">
+                                <div class="col-md-6">
+                                    <input id="newPromoName" class="form-control" placeholder="Nouvelle promotion : nom"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <input id="newPromoLbl" class="form-control" placeholder="Nouvelle promotion : label"/>
+                                </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                          <button id="newPromoBtn" title="Ajouter une promotion" class="btn btn-success" style="display: inline-block;" onclick="newPromo()" data-dismiss="modal" aria-hidden="true">Valider</button>
                           <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
 
                           </div>
@@ -160,24 +193,28 @@
         listParsed = '<ul><li id="tous">Commun à toutes les promos</li>';
 
         for(i=0; i<content.promos.length; i++){
-            listParsed += '<li id="'+content.promos[i].promo+'" onclick="showModifPromo(this)" >'+content.promos[i].label+"</li>";
+            listParsed += '<li id="'+content.promos[i].promo+'" onclick="showModifPromoModal(this)" >'+content.promos[i].label+"</li>";
         }
         listParsed += "</ul>";
         return listParsed;
     }
 
-    function showModifPromo(eventSrc){
+    function showNewPromoModal(eventSrc){
+        $("#newPromoModal").modal({backdrop: true});
+    }
+
+    function showModifPromoModal(eventSrc){
         var promoId = eventSrc.id;
         var promoName = $("#"+promoId).html();
         $("#promotionNameInput").val(promoId);
         $("#promotionLabelInput").val(promoName);
-        $("#modifPromo").modal({backdrop: true});
+        $("#modifPromoModal").modal({backdrop: true});
     }
 
-    function showDelPromo(eventSrc, eventPrev){
+    function showDelPromoModal(eventSrc, eventPrev){
         promoName = $("#promotionLabelInput").val();
         $("#disPromoLabel").html( promoName );
-        $("#delPromo").modal({backdrop: true});
+        $("#delPromoModal").modal({backdrop: true});
     }
 
     function newPromo(){

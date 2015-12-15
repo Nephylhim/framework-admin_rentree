@@ -226,7 +226,7 @@
     }
 
     function newPromo(){
-        var name = $("#newPromoName").val();
+        var name = $("#newPromoName").val().replace(/\ /g, "_");;
         var label = $("#newPromoLbl").val();
         $.ajax({
             url: "<?=url_for('/promos/add'); ?>/"+name+"/"+label,

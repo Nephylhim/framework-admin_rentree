@@ -111,7 +111,8 @@ class Promo implements JsonSerializable
 		global $bdd;
 
 		$sql = "SELECT *
-				FROM promo_label";
+				FROM promo_label
+				ORDER BY label";
 
 		$rq = $bdd->prepare($sql);
 

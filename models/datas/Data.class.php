@@ -247,7 +247,8 @@ class Data implements JsonSerializable
 		global $bdd;
 
 		$sql = "SELECT *
-				FROM data";
+				FROM data
+				ORDER BY date";
 
 		$rq = $bdd->prepare($sql);
 

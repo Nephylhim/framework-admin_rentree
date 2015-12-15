@@ -43,3 +43,40 @@ function updFile()
 	header('Content-Type: application/json');
 	return render("status.json.php");
 }
+
+function delFile()
+{
+	$id = params("id");
+
+	$file = File::getDocumentById($id);
+	$status = $file->delete();
+
+	set("status", $status);
+
+	header('Content-Type: application/json');
+	return render("status.json.php");
+}
+
+function addFile()
+{
+	$promo = params("promo");
+	$rang = params("rang");
+	$libelle = params("libelle");
+
+	if(!(isset($_FILES["document"]) && $_FILES["document"]["error"] == 0))
+	{
+		return false;
+	}
+
+	$file = new File();
+	$file->setPromo($promo);
+	$file->setRang($rang);
+	$file->setLibelle($libelle);
+	$file->setFichier($_FILES["document"]["tmp_name"]);
+	$status = $file->create();
+
+	set("status", $status);
+
+	header('Content-Type: application/json');
+	return render("status.json.php");
+}

@@ -50,24 +50,10 @@
         </div>
 
         <div class="col-md-7">
-            <section class="promotionListPanel">
-                <h1>Liste des promotions</h1>
+            <section class="fileListPanel">
+                <h1>Liste des fichiers</h1>
 
-                <div class="newPromo row">
-                    <div class="col-md-6">
-                        <input id="promotionName" class="form-control" placeholder="Nouvelle promotion">
-                    </div>
-                    <div class="col-md-3">
-
-                    </div>
-                    <div class="col-md-3">
-                        <button id="bouton_AjouterPromo" title="Ajouter une promotion" class="btn generation_element_to_change btn-success" style="display: inline-block;">
-                            Valider
-                        </button>
-                    </div>
-                </div>
-
-                <div id="test">
+                <div id="fileList" class="limitedHeight">
 
                 </div>
 
@@ -171,19 +157,21 @@
         refresh_promo();
     });
 
+/*------------------------------------------------------------------ Promos -----------------------------------------------------------------------*/
+
     function refresh_promo(){
         $.ajax({
             url: "<?=url_for('/promos/get'); ?>",
             method: "GET",
             dataType: "json"
         }).success( function(content){
-            content=parseList(content);
+            content=parsePromoList(content);
             $("#promotionList").html(content);
             $("#promotionList").children("ul").children("li").children(".listBtn").hide();
         });
     }
 
-    function parseList(content){
+    function parsePromoList(content){
         listParsed = '<ul><li id="tous">Commun à toutes les promos</li>';
 
         for(i=0; i<content.promos.length; i++){
@@ -250,6 +238,10 @@
             method: "POST",
         }).success( refresh_promo() );
     }
+
+/*------------------------------------------------------------------- Files -----------------------------------------------------------------------*/
+
+
 </script>
 
 <?php end_content_for();?>

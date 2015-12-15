@@ -297,8 +297,8 @@
 
         for(i=0; i<content.files.length; i++){
             listParsed += '<li id="'+content.files[i].id+'" onclick="activeFile(this)" >'+content.files[i].libelle+'<div class="row listBtn" aria-hidden="true">'
-                +'<div class="col-md-6 right"><button id="modifFileModalBtn" title="Modifier une promotion" class="btn btn-primary" onclick="showModifPromoModal(this)">Modifier</button></div>'
-                +'<div class="col-md-6 left"><button id="delFileModalBtn" title="Supprimer une promotion" class="btn btn-danger" onclick="showDelPromoModal(this)">Supprimer</button></div>'
+                +'<div class="col-md-6 right"><button id="modifFileModalBtn" title="Modifier un fichier" class="btn btn-primary" onclick="showModifFileModal(this)">Modifier</button></div>'
+                +'<div class="col-md-6 left"><button id="delFileModalBtn" title="Supprimer un fichier" class="btn btn-danger" onclick="showDelFileModal(this)">Supprimer</button></div>'
                 +'</div><div class="hidden"><div class="rank">'+content.files[i].rang+'</div><div class="promo">'+content.files[i].promo+'</div></div></li>';
         }
         listParsed += "</ul>";
@@ -313,8 +313,11 @@
 
         fileId = eventSrc.id;
         var fileLibelle = $("#"+fileId).clone().children().remove().end().text();
-        var filePromo = $("#"+fileId).children(".hidden").children(".promo").val();
-        var fileRank = $("#"+fileId).children(".hidden").children(".rank").val();
+        var filePromo = $("#"+fileId).children(".promo").text();
+        var fileRank = $("#"+fileId).children(".rank").text();
+        console.log($("#"+fileId));
+        console.log($("#"+fileId).children(".hidden").children(".rank"));
+        console.log(fileRank);
 
         $("#fileIdInput").val(fileId);
         $("#fileLibelleInput").val(fileLibelle);
@@ -323,6 +326,10 @@
 
         //$("#"+promoId).children(".listBtn").attr("aria-hidden", "false");
         $("#"+fileId).children(".listBtn").show();
+    }
+
+    function showModifFileModal(eventSrc){
+        $("#modifFileModal").modal({backdrop: true});
     }
 
 </script>

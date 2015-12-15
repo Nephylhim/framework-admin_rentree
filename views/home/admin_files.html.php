@@ -98,7 +98,7 @@
                               <br>
                           </div>
                           <div class="modal-footer">
-                          <button id="editPromo" class="btn btn-success" data-dismiss="modal" aria-hidden="true">Sauvegarder</button>
+                          <button id="editPromo" class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="modifPromo(this)">Sauvegarder</button>
                           <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
 
                           </div>
@@ -236,6 +236,15 @@
         var name = $("#promotionNameInput").val();
         $.ajax({
             url: "<?=url_for('/promos/del'); ?>/"+name,
+            method: "POST",
+        }).success( refresh_promo() );
+    }
+
+    function modifPromo(eventSrc){
+        var name = $("#promotionNameInput").val();
+        var label = $("#promotionLabelInput").val();
+        $.ajax({
+            url: "<?=url_for('/promos/upd'); ?>/"+name+"/"+label,
             method: "POST",
         }).success( refresh_promo() );
     }

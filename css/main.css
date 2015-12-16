@@ -204,7 +204,32 @@ table tr:hover{
 }
 
 
+/*------------------------------------------------------------- inputs -------------------------------------------------------------------*/
 
+input[type="file"]{
+    background: none;
+    border: none;
+}
+
+.upload {
+    overflow: hidden;
+    height: 34px;
+    width: 100%;
+    padding:6px 12px;
+    font-size:14px;
+    line-height:1.42857143;
+}
+
+.upload input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block !important;
+    height: 34px;
+    width: 100%;
+    opacity: 0 !important;
+    overflow: hidden !important;
+}
 
 /*----------------------------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------- Non Perso ------------------------------------------------------------------*/

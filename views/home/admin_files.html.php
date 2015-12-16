@@ -144,7 +144,7 @@
                       </div>
                     </div>
 
-        <!-- Modal Modif promo-->
+        <!-- Modal Modif file-->
                     <div class="modal fade" id="modifFileModal" role="dialog" >
                       <div class="modal-dialog">
 
@@ -191,7 +191,7 @@
                       </div>
                     </div>
 
-        <!-- Modal Suppr promo-->
+        <!-- Modal Suppr file-->
                     <div class="modal fade" id="delFileModal" role="dialog" >
                       <div class="modal-dialog">
 
@@ -213,7 +213,7 @@
                       </div>
                     </div>
 
-        <!-- Modal add promo-->
+        <!-- Modal add file-->
                     <div class="modal fade" id="newFileModal" role="dialog" >
                       <div class="modal-dialog">
 
@@ -222,19 +222,48 @@
                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                             <h4 class="modal-title" id="myModalLabel">Ajouter un Fichier</h4>
                           </div>
-                          <div class="modal-body">
-                            <label class="control-label">Sélectionnez le fichier</label>
-                            <div class="btn btn-primary btn-file">
-                                <i class="glyphicon glyphicon-folder-open"></i>
-                                <span class="hidden-xs">Parcourir …</span>
-                                <input id="input-1" class="file" type="file">
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                          <button id="newFileBtn" title="Ajouter un fichier" class="btn btn-success" style="display: inline-block;" onclick="newFile()" data-dismiss="modal" aria-hidden="true">Valider</button>
-                          <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
+                          <form id="newFileForm" method="post" action="rien.php">
+                              <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label class="control-label">Sélectionnez le fichier :</label>
+                                    </div>
+                                    <div class="col-md-6 col-md-offset-1">
+                                        <div class="btn btn-primary btn-file upload">
+                                            <i class="glyphicon glyphicon-folder-open"></i>
+                                            <span class="hidden-xs">Parcourir …</span>
+                                            <input id="input-1" class="file" type="file" name="document">
+                                        </div>
+                                    </div>
 
-                          </div>
+                                    <div class="col-md-5">
+                                        <label class="control-label">Libéllé :</label>
+                                    </div>
+                                    <div class="col-md-6 col-md-offset-1">
+                                        <input  id="newFileLibelleInput" class="form-control">
+                                    </div>
+
+                                    <div class="col-md-5">
+                                        <label class="control-label">Promo liée :</label>
+                                    </div>
+                                    <div class="col-md-6 col-md-offset-1">
+                                        <input  id="newFilePromoInput" class="form-control">
+                                    </div>
+
+                                    <div class="col-md-5">
+                                        <label class="control-label">Rang :</label>
+                                    </div>
+                                    <div class="col-md-6 col-md-offset-1">
+                                        <input  id="newFileRankInput" class="form-control">
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                              <button id="newFileBtn" title="Ajouter un fichier" class="btn btn-success" style="display: inline-block;" data-dismiss="modal" aria-hidden="true" type="submit">Valider</button>
+                              <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
+
+                              </div>
+                          </form>
                         </div>
 
                       </div>
@@ -419,6 +448,55 @@
             refreshFiles(promoId);
         });
     }
+
+    function newFile(eventSrc){
+        var libelle = $("#newFileLibelleInput").val();
+        var rang = $("#newFileRankInput").val();
+        var promo = $("#newFilePromoInput").val();
+        console.log(libelle);
+        console.log(rang);
+        console.log(promo);
+        $.ajax({
+            url: "<?=url_for('/files/add'); ?>/"+promo+"/"+rang+"/"+libelle,
+            method: "POST",
+            data: $form.serialize(),
+            contentType: false, // obligatoire pour de l'upload
+            processData: false, // obligatoire pour de l'upload
+            data: data,
+        }).success(function(){
+            var promoId = $("#promotionNameInput").val();
+            refreshFiles(promoId);
+        });
+    }
+
+    $(function () {
+        $('#newFileForm').on('submit', function (e) {
+            console.log("catch");
+
+            // On empêche le navigateur de soumettre le formulaire
+            e.preventDefault();
+
+            var $form = $(this);
+            var formdata = (window.FormData) ? new FormData($form[0]) : null;
+            var data = (formdata !== null) ? formdata : $form.serialize();
+
+            var libelle = $("#newFileLibelleInput").val();
+            var rang = $("#newFileRankInput").val();
+            var promo = $("#newFilePromoInput").val();
+
+            $.ajax({
+                url: "<?=url_for('/files/add'); ?>/"+promo+"/"+rang+"/"+libelle,
+                method: "POST",
+                data: $form.serialize(),
+                contentType: false, // obligatoire pour de l'upload
+                processData: false, // obligatoire pour de l'upload
+                data: data,
+            }).success(function(){
+                var promoId = $("#promotionNameInput").val();
+                refreshFiles(promoId);
+            });
+        });
+    });
 
 </script>
 

@@ -463,7 +463,8 @@
             contentType: false, // obligatoire pour de l'upload
             processData: false, // obligatoire pour de l'upload
             data: data,
-        }).success(function(){
+        }).success(function(content){
+            console.log(content);
             var promoId = $("#promotionNameInput").val();
             refreshFiles(promoId);
         });
@@ -474,7 +475,7 @@
             console.log("catch");
 
             // On empêche le navigateur de soumettre le formulaire
-            e.preventDefault();
+            //e.preventDefault();
 
             var $form = $(this);
             var formdata = (window.FormData) ? new FormData($form[0]) : null;
@@ -487,13 +488,16 @@
             $.ajax({
                 url: "<?=url_for('/files/add'); ?>/"+promo+"/"+rang+"/"+libelle,
                 method: "POST",
-                data: $form.serialize(),
-                contentType: false, // obligatoire pour de l'upload
-                processData: false, // obligatoire pour de l'upload
+                //data: $form.serialize(),
+                //contentType: false, // obligatoire pour de l'upload
+                //processData: false, // obligatoire pour de l'upload
                 data: data,
-            }).success(function(){
+            }).success(function(content){
+                console.log(content);
                 var promoId = $("#promotionNameInput").val();
                 refreshFiles(promoId);
+            }).error(function(err){
+                console.log(err);
             });
         });
     });

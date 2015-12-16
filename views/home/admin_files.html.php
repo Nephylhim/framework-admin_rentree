@@ -438,6 +438,20 @@
         $("#delFileModal").modal({backdrop: true});
     }
 
+    function modifFile(){
+        var id = $("#fileIdInput").val();
+        var libelle = $("#fileLibelleInput").val();
+        var rang = $("#fileRankInput").val();
+        var promo = $("#filePromoInput").val();
+        $.ajax({
+            url: "<?=url_for('/files/upd'); ?>/"+id+"/"+promo+"/"+rang+"/"+libelle,
+            method: "POST",
+        }).success(function(){
+            var promoId = $("#promotionNameInput").val();
+            refreshFiles(promoId);
+        });
+    }
+
     function delFile(eventScr){
         var id = $("#fileIdInput").val();
         $.ajax({

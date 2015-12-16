@@ -29,16 +29,6 @@
                             Ajouter
                         </button>
                     </div>
-                    <!--<div class="col-md-4">
-                        <button id="modifPromoModalBtn" title="Modifier une promotion" class="btn btn-primary" style="display: inline-block;" onclick="showModifPromoModal(this)">
-                            Modifier
-                        </button>
-                    </div>-->
-                    <!--<div class="col-md-6 center">
-                        <button id="newPromoBtn" title="Supprimer une promotion" class="btn btn-danger" style="display: inline-block;" onclick="showDelPromoModal(this)">
-                            Supprimer
-                        </button>
-                    </div>-->
                 </div>
 
                 <div id="promotionList" class="limitedHeight">
@@ -52,6 +42,14 @@
         <div class="col-md-7">
             <section class="fileListPanel listPanel">
                 <h1>Liste des fichiers</h1>
+
+                <div class="row">
+                    <div class="col-md-12 center">
+                        <button id="newFileModalBtn" title="Ajouter un fichier" class="btn btn-primary" style="display: inline-block;" onclick="showNewFileModal(this)">
+                            Ajouter
+                        </button>
+                    </div>
+                </div>
 
                 <div id="fileList" class="limitedHeight">
 
@@ -193,6 +191,54 @@
                       </div>
                     </div>
 
+        <!-- Modal Suppr promo-->
+                    <div class="modal fade" id="delFileModal" role="dialog" >
+                      <div class="modal-dialog">
+
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Suppression de Fichier</h4>
+                          </div>
+                          <div class="modal-body">
+                              <p>Êtes-vous sur de vouloir supprimer le fichier <span id="disFileLabel"></span> ?</p>
+                          </div>
+                          <div class="modal-footer">
+                          <button id="delFileBtn" class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="delFile(this)">Supprimer</button>
+                          <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
+
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+        <!-- Modal add promo-->
+                    <div class="modal fade" id="newFileModal" role="dialog" >
+                      <div class="modal-dialog">
+
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Ajouter un Fichier</h4>
+                          </div>
+                          <div class="modal-body">
+                            <label class="control-label">Sélectionnez le fichier</label>
+                            <div class="btn btn-primary btn-file">
+                                <i class="glyphicon glyphicon-folder-open"></i>
+                                <span class="hidden-xs">Parcourir …</span>
+                                <input id="input-1" class="file" type="file">
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                          <button id="newFileBtn" title="Ajouter un fichier" class="btn btn-success" style="display: inline-block;" onclick="newFile()" data-dismiss="modal" aria-hidden="true">Valider</button>
+                          <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
+
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
 
 <?php end_content_for();?>
 
@@ -349,8 +395,29 @@
         $("#"+fileId).children(".listBtn").show();
     }
 
+    function showNewFileModal(eventSrc){
+        $("#newFileModal").modal({backdrop: true});
+    }
+
     function showModifFileModal(eventSrc){
         $("#modifFileModal").modal({backdrop: true});
+    }
+
+    function showDelFileModal(eventSrc){
+        fileLibelle = $("#fileLibelleInput").val();
+        $("#disFileLabel").html( fileLibelle );
+        $("#delFileModal").modal({backdrop: true});
+    }
+
+    function delFile(eventScr){
+        var id = $("#fileIdInput").val();
+        $.ajax({
+            url: "<?=url_for('/files/del'); ?>/"+id,
+            method: "POST",
+        }).success(function(){
+            var promoId = $("#promotionNameInput").val();
+            refreshFiles(promoId);
+        });
     }
 
 </script>

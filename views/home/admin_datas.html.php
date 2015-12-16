@@ -23,10 +23,10 @@
             <section class="datasListPanel listPanel">
                 <h1>Liste des donnnées élèves</h1>
 				<div class="col-md-12 center">
-                    <button id="exportDatasBtn" title="Exporter au format csv" class="btn btn-primary" style="display: inline-block;" onclick="">
+                    <button id="exportDatasBtn" title="Exporter au format csv" class="btn btn-primary" style="display: inline-block;" onclick="downloadDataCsv()">
 						Exporter au format csv
                     </button>
-					<button id="deleteDatasBtn" title="Supprimer toute les données" class="btn btn-danger" style="display: inline-block;" onclick="">
+					<button id="deleteDatasBtn" title="Supprimer toute les données" class="btn btn-danger" style="display: inline-block;" onclick="showDelAllDatasDialog()">
 						Supprimer toute les données
                     </button>
                 </div>
@@ -49,6 +49,29 @@
         </div>
     </div>
 </div>
+
+
+	<!-- Modal Suppr all datas-->
+	<div class="modal fade" id="delAllDatasModal" role="dialog" >
+		<div class="modal-dialog">
+
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title" id="myModalLabel">Suppression de toutes les données élèves</h4>
+				</div>
+				<div class="modal-body">
+					<p>Êtes-vous sur de vouloir supprimer toutes les données élèves ?</p>
+				</div>
+				<div class="modal-footer">
+					<button id="delFileBtn" class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="delAllDatas()">Supprimer toutes les données élèves</button>
+					<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
 
 <?php end_content_for();?>
 
@@ -100,6 +123,38 @@
 			}
 			listParsed += "</table>";
 			return listParsed;
+		}
+
+		function downloadDataCsv(){
+			window.location.href = "<?=url_for('/datas/xtr')?>";
+		}
+
+		function showDelAllDatasDialog(){
+			$("#delAllDatasModal").modal({backdrop: true});
+		}
+
+		function delAllDatas(){
+			$.ajax({
+				url: "<?=url_for('/datas/del/all'); ?>",
+				method: "POST"
+			}).success( refreshDatas() );
+
+		}
+
+		function showDelDataDialog(){
+
+		}
+
+		function delData(){
+
+		}
+
+		function showUpdDataDialog(){
+
+		}
+
+		function updData(){
+
 		}
 
 	</script>

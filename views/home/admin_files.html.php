@@ -340,9 +340,6 @@
         var filePromo = $("#"+fileId).children(".hidden").children(".promo").html();
         var fileRank = $("#"+fileId).children(".hidden").children(".rank").html();
 
-        console.log(fileRank);
-        console.log(filePromo);
-
         $("#fileIdInput").val(fileId);
         $("#fileLibelleInput").val(fileLibelle);
         $("#filePromoInput").val(filePromo);

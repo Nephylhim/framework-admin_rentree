@@ -245,7 +245,8 @@ class File implements JsonSerializable
 			"id" => $this->getId(),
 			"rang" => $this->getRang(),
 			"promo" => $this->getPromo(),
-			"libelle" => $this->getLibelle()
+			"libelle" => $this->getLibelle(),
+			"file" => $this->getFichier()
 		];
 	}
 }

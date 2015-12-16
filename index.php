@@ -5,6 +5,7 @@ dispatch("/", "home");
 dispatch("/home", "home");
 dispatch("/admin_files", "files");
 dispatch("/admin_datas", "datas");
+dispatch_get("/upload", "getUploadPage");//get uploading page
 
 dispatch_get("/promos/get", "getPromo");//get all promos
 dispatch_get("/promos/get/:promo", "getPromo");//get a promo

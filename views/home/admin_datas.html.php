@@ -23,10 +23,10 @@
             <section class="datasListPanel listPanel">
                 <h1>Liste des donnnées élèves</h1>
 				<div class="col-md-12 center">
-                    <button id="exportDatasBtn" title="Exporter au format csv" class="btn btn-primary" style="display: inline-block;" onclick="">
+                    <button id="exportDatasBtn" title="Exporter au format csv" class="btn btn-primary" style="display: inline-block;" onclick="downloadDataCsv()">
 						Exporter au format csv
                     </button>
-					<button id="deleteDatasBtn" title="Supprimer toute les données" class="btn btn-danger" style="display: inline-block;" onclick="">
+					<button id="deleteDatasBtn" title="Supprimer toute les données" class="btn btn-danger" style="display: inline-block;" onclick="showDelAllDatasDialog()">
 						Supprimer toute les données
                     </button>
                 </div>
@@ -49,6 +49,138 @@
         </div>
     </div>
 </div>
+
+
+	<!-- Modal Suppr all datas-->
+	<div class="modal fade" id="delAllDatasModal" role="dialog" >
+		<div class="modal-dialog">
+
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title" id="myModalLabel">Suppression de toutes les données élèves</h4>
+				</div>
+				<div class="modal-body">
+					<p>Êtes-vous sur de vouloir supprimer toutes les données élèves ?</p>
+				</div>
+				<div class="modal-footer">
+					<button id="delFileBtn" class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="delAllDatas()">Supprimer toutes les données élèves</button>
+					<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Modal Suppr a data-->
+	<div class="modal fade" id="delDataModal" role="dialog" >
+		<div class="modal-dialog">
+
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title" id="myModalLabel">Suppression d'une donnée élève</h4>
+				</div>
+				<div class="modal-body">
+					<p>Êtes-vous sur de vouloir supprimer données élèves de l'elév identifié par <span id="delDataLabel"></span> (id n°<span id="idDataLabel"></span>) ?</p>
+				</div>
+				<div class="modal-footer">
+					<button id="delFileBtn" class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="delData()">Supprimer l'élève</button>
+					<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Modal Modif data-->
+	<div class="modal fade" id="updDataModal" role="dialog" >
+		<div class="modal-dialog">
+
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title" id="myModalLabel">Modification de données élève</h4>
+				</div>
+				<div class="modal-body">
+					<p>Vous pouvez modifier les éléments suivants</p>
+					<div class="row">
+						<div class="col-md-5">
+							<label for="idDataInput">Id:</label>
+						</div>
+						<div class=" col-md-6 col-md-offset-1">
+							<input  id="idDataInput" class="form-control" disabled>
+						</div>
+
+						<div class="col-md-5">
+							<label for="identifiantDataInput">Identifiant:</label>
+						</div>
+						<div class=" col-md-6 col-md-offset-1">
+							<input  id="identifiantDataInput" class="form-control">
+						</div>
+
+						<div class="col-md-5">
+							<label for="nom_filsDataInput">Nom_fils:</label>
+						</div>
+						<div class=" col-md-6 col-md-offset-1">
+							<input  id="nom_filsDataInput" class="form-control">
+						</div>
+
+						<div class="col-md-5">
+							<label for="prenom_filsDataInput">Prenom_fils:</label>
+						</div>
+						<div class=" col-md-6 col-md-offset-1">
+							<input  id="prenom_filsDataInput" class="form-control">
+						</div>
+
+						<div class="col-md-5">
+							<label for="ddn_filsDataInput">Ddn_fils:</label>
+						</div>
+						<div class=" col-md-6 col-md-offset-1">
+							<input  id="ddn_filsDataInput" class="form-control">
+						</div>
+
+						<div class="col-md-5">
+							<label for="tel_mobileDataInput">Tel_mobile:</label>
+						</div>
+						<div class=" col-md-6 col-md-offset-1">
+							<input  id="tel_mobileDataInput" class="form-control">
+						</div>
+
+						<div class="col-md-5">
+							<label for="courrielDataInput">Courriel:</label>
+						</div>
+						<div class=" col-md-6 col-md-offset-1">
+							<input  id="courrielDataInput" class="form-control">
+						</div>
+
+						<div class="col-md-5">
+							<label for="dateDataInput">Date:</label>
+						</div>
+						<div class=" col-md-6 col-md-offset-1">
+							<input  id="dateDataInput" class="form-control" disabled>
+						</div>
+
+						<div class="col-md-5">
+							<label for="ipDataInput">Ip:</label>
+						</div>
+						<div class=" col-md-6 col-md-offset-1">
+							<input  id="ipDataInput" class="form-control" disabled>
+						</div>
+					</div>
+					<br>
+				</div>
+				<div class="modal-footer">
+					<button id="editFile" class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="modifFile(this)">Sauvegarder</button>
+					<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
 
 <?php end_content_for();?>
 
@@ -89,10 +221,10 @@
 					'<td>'+ content.datas[i].date +'</td>' +
 					'<td>'+ content.datas[i].ip +'</td>' +
 					'<td>' +
-						'<button id="updDatasBtn" title="Modifier" class="btn btn-primary" style="display: inline-block;" onclick="">' +
+						'<button id="updDatasBtn" title="Modifier" class="btn btn-primary" style="display: inline-block;" onclick="showUpdDataDialog(this)">' +
 							'Modifier' +
 						'</button>' +
-						'<button id="exportDatasBtn" title="Supprimer" class="btn btn-danger" style="display: inline-block;" onclick="">' +
+						'<button id="exportDatasBtn" title="Supprimer" class="btn btn-danger" style="display: inline-block;" onclick="showDelDataDialog(this)">' +
 							'Supprimer' +
 						'</button>' +
 					'</td>' +
@@ -100,6 +232,46 @@
 			}
 			listParsed += "</table>";
 			return listParsed;
+		}
+
+		function downloadDataCsv(){
+			window.location.href = "<?=url_for('/datas/xtr')?>";
+		}
+
+		function showDelAllDatasDialog(){
+			$("#delAllDatasModal").modal({backdrop: true});
+		}
+
+		function delAllDatas(){
+			$.ajax({
+				url: "<?=url_for('/datas/del/all'); ?>",
+				method: "POST"
+			}).success( refreshDatas() );
+		}
+
+		function showDelDataDialog(src){
+			eleve = $(src).parent().parent().children().eq(1).html();
+			id = $(src).parent().parent().children().eq(0).html();
+			$("#delDataLabel").html(eleve);
+			$("#idDataLabel").html(id);
+			$("#idDataLabel").html(id);
+			$("#delDataModal").modal({backdrop: true});
+		}
+
+		function delData(){
+			$id = $("#idDataLabel").html(id);
+			$.ajax({
+				url: "<?=url_for('/datas/del'); ?>/"+id,
+				method: "POST"
+			}).success( refreshDatas() );
+		}
+
+		function showUpdDataDialog(src){
+			$("#updDataModal").modal({backdrop: true});
+		}
+
+		function updData(){
+
 		}
 
 	</script>

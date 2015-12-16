@@ -5,8 +5,8 @@
         <title><?php echo h($title); ?></title> <!--TODO rendre dynamique -->
         <link rel="icon" href="ressources/images/logoCarre_noFond.png" type="image/png"/>
 
-        <link rel='stylesheet' href='style/css/bootstrap.min.css'>
-        <link href="style/css/main.css" rel="stylesheet" type="text/css"/>
+        <link rel='stylesheet' href='css/bootstrap.min.css'>
+        <link href="css/main.css" rel="stylesheet" type="text/css"/>
         <?php if(!empty($link)):
             echo $link;
             endif;

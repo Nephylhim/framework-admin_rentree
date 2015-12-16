@@ -158,18 +158,28 @@
                           <div class="modal-body">
                               <p>Vous pouvez modifier les éléments du fichier</p>
                               <div class="row">
-                                  <div class=" col-md-5 ">
-                                      <input  id="fileIdInput" class="form-control" disabled>
-                                  </div>
-                                  <div class=" col-md-6 col-md-offset-1">
-                                      <input  id="fileLibelleInput" class="form-control">
-                                  </div>
-                                  <div class=" col-md-5 ">
-                                      <input  id="filePromoInput" class="form-control" disabled>
-                                  </div>
-                                  <div class=" col-md-6 col-md-offset-1">
-                                      <input  id="fileRankInput" class="form-control">
-                                  </div>
+                                <input  id="fileIdInput" class="form-control hidden" disabled>
+
+                                <div class="col-md-5">
+                                     <label for="libelle">Libéllé :</label>
+                                </div>
+                                <div class=" col-md-6 col-md-offset-1">
+                                    <input  id="fileLibelleInput" class="form-control">
+                                </div>
+
+                                <div class="col-md-5">
+                                     <label for="promo">Promotion liée :</label>
+                                </div>
+                                <div class="col-md-6 col-md-offset-1">
+                                    <input  id="filePromoInput" class="form-control">
+                                </div>
+
+                                <div class="col-md-5">
+                                     <label for="rank">Rang :</label>
+                                </div>
+                                <div class="col-md-6 col-md-offset-1">
+                                    <input  id="fileRankInput" class="form-control">
+                                </div>
                               </div>
                               <br>
                           </div>
@@ -210,7 +220,7 @@
     }
 
     function parsePromoList(content){
-        listParsed = '<ul><li id="tous">Commun à toutes les promos</li>';
+        listParsed = '<ul><li id="tous" onclick="activePromoCommon(this)">Commun à toutes les promos</li>';
 
         for(i=0; i<content.promos.length; i++){
             listParsed += '<li id="'+content.promos[i].promo+'" onclick="activePromo(this)" >'+content.promos[i].label+'<div class="row listBtn" aria-hidden="true">'
@@ -233,8 +243,22 @@
         $("#promotionNameInput").val(promoId);
         $("#promotionLabelInput").val(promoLabel);
 
-        //$("#"+promoId).children(".listBtn").attr("aria-hidden", "false");
         $("#"+promoId).children(".listBtn").show();
+        refreshFiles(promoId);
+    }
+
+    function activePromoCommon(eventSrc){
+        var promoId = $("#promotionNameInput").val();
+        if(promoId != ""){
+            $("#"+promoId).children(".listBtn").hide();
+        }
+
+        promoId = eventSrc.id;
+        var promoLabel = $("#"+promoId).clone().children().remove().end().text();
+        $("#promotionNameInput").val(promoId);
+        $("#promotionLabelInput").val(promoLabel);
+
+        refreshFiles(-1);
     }
 
     function showNewPromoModal(eventSrc){
@@ -313,16 +337,16 @@
 
         fileId = eventSrc.id;
         var fileLibelle = $("#"+fileId).clone().children().remove().end().text();
-        var filePromo = $("#"+fileId).children(".promo").text();
-        var fileRank = $("#"+fileId).children(".rank").text();
-        console.log($("#"+fileId));
-        console.log($("#"+fileId).children(".hidden").children(".rank"));
+        var filePromo = $("#"+fileId).children(".hidden").children(".promo").html();
+        var fileRank = $("#"+fileId).children(".hidden").children(".rank").html();
+
         console.log(fileRank);
+        console.log(filePromo);
 
         $("#fileIdInput").val(fileId);
         $("#fileLibelleInput").val(fileLibelle);
-        $("filePromoInput").val(filePromo);
-        $("fileRankInput").val(fileRank);
+        $("#filePromoInput").val(filePromo);
+        $("#fileRankInput").val(fileRank);
 
         //$("#"+promoId).children(".listBtn").attr("aria-hidden", "false");
         $("#"+fileId).children(".listBtn").show();

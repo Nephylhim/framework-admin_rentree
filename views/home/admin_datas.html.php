@@ -73,6 +73,28 @@
 		</div>
 	</div>
 
+	<!-- Modal Suppr a data-->
+	<div class="modal fade" id="delDataModal" role="dialog" >
+		<div class="modal-dialog">
+
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title" id="myModalLabel">Suppression d'une donnée élève</h4>
+				</div>
+				<div class="modal-body">
+					<p>Êtes-vous sur de vouloir supprimer données élèves de l'elév identifié par <span id="delDataLabel"></span> (id n°<span id="idDataLabel"></span>) ?</p>
+				</div>
+				<div class="modal-footer">
+					<button id="delFileBtn" class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="delData()">Supprimer l'élève</button>
+					<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
 <?php end_content_for();?>
 
 
@@ -115,7 +137,7 @@
 						'<button id="updDatasBtn" title="Modifier" class="btn btn-primary" style="display: inline-block;" onclick="">' +
 							'Modifier' +
 						'</button>' +
-						'<button id="exportDatasBtn" title="Supprimer" class="btn btn-danger" style="display: inline-block;" onclick="">' +
+						'<button id="exportDatasBtn" title="Supprimer" class="btn btn-danger" style="display: inline-block;" onclick="showDelDataDialog(this)">' +
 							'Supprimer' +
 						'</button>' +
 					'</td>' +
@@ -138,15 +160,23 @@
 				url: "<?=url_for('/datas/del/all'); ?>",
 				method: "POST"
 			}).success( refreshDatas() );
-
 		}
 
-		function showDelDataDialog(){
-
+		function showDelDataDialog(src){
+			eleve = $(src).parent().parent().children().eq(1).html();
+			id = $(src).parent().parent().children().eq(0).html();
+			$("#delDataLabel").html(eleve);
+			$("#idDataLabel").html(id);
+			$("#idDataLabel").html(id);
+			$("#delDataModal").modal({backdrop: true});
 		}
 
 		function delData(){
-
+			$id = $("#idDataLabel").html(id);
+			$.ajax({
+				url: "<?=url_for('/datas/del'); ?>/"+id,
+				method: "POST"
+			}).success( refreshDatas() );
 		}
 
 		function showUpdDataDialog(){

@@ -325,7 +325,7 @@ class Data implements JsonSerializable
 			"prenom_fils" => $this->getPrenomFils(),
 			"ddn_fils" => $this->getDdnFils(),
 			"tel_mobile" => $this->getTelMobile(),
-			"couriel" => $this->getCourriel(),
+			"courriel" => $this->getCourriel(),
 			"date" => $this->getDate(),
 			"ip" => $this->getIp()
 		];

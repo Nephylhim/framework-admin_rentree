@@ -95,6 +95,93 @@
 		</div>
 	</div>
 
+	<!-- Modal Modif data-->
+	<div class="modal fade" id="updDataModal" role="dialog" >
+		<div class="modal-dialog">
+
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title" id="myModalLabel">Modification de données élève</h4>
+				</div>
+				<div class="modal-body">
+					<p>Vous pouvez modifier les éléments suivants</p>
+					<div class="row">
+						<div class="col-md-5">
+							<label for="idDataInput">Id:</label>
+						</div>
+						<div class=" col-md-6 col-md-offset-1">
+							<input  id="idDataInput" class="form-control" disabled>
+						</div>
+
+						<div class="col-md-5">
+							<label for="identifiantDataInput">Identifiant:</label>
+						</div>
+						<div class=" col-md-6 col-md-offset-1">
+							<input  id="identifiantDataInput" class="form-control">
+						</div>
+
+						<div class="col-md-5">
+							<label for="nom_filsDataInput">Nom_fils:</label>
+						</div>
+						<div class=" col-md-6 col-md-offset-1">
+							<input  id="nom_filsDataInput" class="form-control">
+						</div>
+
+						<div class="col-md-5">
+							<label for="prenom_filsDataInput">Prenom_fils:</label>
+						</div>
+						<div class=" col-md-6 col-md-offset-1">
+							<input  id="prenom_filsDataInput" class="form-control">
+						</div>
+
+						<div class="col-md-5">
+							<label for="ddn_filsDataInput">Ddn_fils:</label>
+						</div>
+						<div class=" col-md-6 col-md-offset-1">
+							<input  id="ddn_filsDataInput" class="form-control">
+						</div>
+
+						<div class="col-md-5">
+							<label for="tel_mobileDataInput">Tel_mobile:</label>
+						</div>
+						<div class=" col-md-6 col-md-offset-1">
+							<input  id="tel_mobileDataInput" class="form-control">
+						</div>
+
+						<div class="col-md-5">
+							<label for="courrielDataInput">Courriel:</label>
+						</div>
+						<div class=" col-md-6 col-md-offset-1">
+							<input  id="courrielDataInput" class="form-control">
+						</div>
+
+						<div class="col-md-5">
+							<label for="dateDataInput">Date:</label>
+						</div>
+						<div class=" col-md-6 col-md-offset-1">
+							<input  id="dateDataInput" class="form-control" disabled>
+						</div>
+
+						<div class="col-md-5">
+							<label for="ipDataInput">Ip:</label>
+						</div>
+						<div class=" col-md-6 col-md-offset-1">
+							<input  id="ipDataInput" class="form-control" disabled>
+						</div>
+					</div>
+					<br>
+				</div>
+				<div class="modal-footer">
+					<button id="editFile" class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="modifFile(this)">Sauvegarder</button>
+					<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
 <?php end_content_for();?>
 
 
@@ -134,7 +221,7 @@
 					'<td>'+ content.datas[i].date +'</td>' +
 					'<td>'+ content.datas[i].ip +'</td>' +
 					'<td>' +
-						'<button id="updDatasBtn" title="Modifier" class="btn btn-primary" style="display: inline-block;" onclick="">' +
+						'<button id="updDatasBtn" title="Modifier" class="btn btn-primary" style="display: inline-block;" onclick="showUpdDataDialog(this)">' +
 							'Modifier' +
 						'</button>' +
 						'<button id="exportDatasBtn" title="Supprimer" class="btn btn-danger" style="display: inline-block;" onclick="showDelDataDialog(this)">' +
@@ -179,8 +266,8 @@
 			}).success( refreshDatas() );
 		}
 
-		function showUpdDataDialog(){
-
+		function showUpdDataDialog(src){
+			$("#updDataModal").modal({backdrop: true});
 		}
 
 		function updData(){

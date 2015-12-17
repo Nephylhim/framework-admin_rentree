@@ -173,6 +173,15 @@
                                 </div>
 
                                 <div class="col-md-5">
+                                     <label for="promo">Promotion liée :</label>
+                                </div>
+                                <div class="col-md-6 col-md-offset-1">
+                                    <select id="listPromoSelect" class="form-control">
+
+                                    </select>
+                                </div>
+
+                                <div class="col-md-5">
                                      <label for="rank">Rang :</label>
                                 </div>
                                 <div class="col-md-6 col-md-offset-1">
@@ -279,6 +288,7 @@
         refreshPromos();
         refreshFiles(-1);
         $("#promotionNameInput").val("tous"); //fix a bug when you upd or del a file when you haven't select a promo (default : all)
+        refreshPromoSelect();
     });
 
 /*------------------------------------------------------------------ Promos -----------------------------------------------------------------------*/
@@ -520,6 +530,29 @@
             });
         });
     });
+
+
+/*------------------------------------------------------------------ Selects ----------------------------------------------------------------------*/
+
+    function refreshPromoSelect(){
+        $.ajax({
+            url: "<?=url_for('/promos/get'); ?>",
+            method: "GET",
+            dataType: "json"
+        }).success( function(content){
+            content=parsePromoSelect(content);
+            $("#listPromoSelect").html(content);
+        });
+    }
+
+    function parsePromoSelect(content){
+        listParsed = '';
+
+        for(i=0; i<content.promos.length; i++){
+            listParsed += '<option value="'+content.promos[i].promo+'">'+content.promos[i].label+'</option>';
+        }
+        return listParsed;
+    }
 
 </script>
 

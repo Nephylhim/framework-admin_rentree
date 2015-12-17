@@ -91,7 +91,7 @@ class Promo implements JsonSerializable
 		}
 
 		//deleting files related to the deleted promo
-		$files = Files::getAllDocumentByPromo($this->getPromo());
+		$files = File::getAllDocumentByPromo($this->getPromo());
 		foreach($files as $file)
 		{
 			$ok = $file->delete();

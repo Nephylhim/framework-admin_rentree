@@ -32,6 +32,11 @@ function updFile()
 	$rang = params("rang");
 	$libelle = params("libelle");
 
+	if($promo == "null" || $promo == "-1")
+	{
+		$promo = "";
+	}
+
 	$file = File::getDocumentById($id);
 	$file->setPromo($promo);
 	$file->setRang($rang);

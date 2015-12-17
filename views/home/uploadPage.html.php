@@ -80,7 +80,7 @@
             }
 
             function parsePromoSelect(content){
-                listParsed = '<option value="tous">Commun à toutes les promos</option>';
+                listParsed = '<option value="-1">Commun à toutes les promos</option>';//fixed a bug, must be -1 on server side, not "tous"
 
                 for(i=0; i<content.promos.length; i++){
                     listParsed += '<option value="'+content.promos[i].promo+'">'+content.promos[i].label+'</option>';

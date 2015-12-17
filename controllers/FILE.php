@@ -66,7 +66,14 @@ function addFile()
 
 	if(!(isset($_FILES["document"]) && $_FILES["document"]["error"] == 0))
 	{
-		return false;
+		set("status", false);
+		header('Content-Type: application/json');
+		return render("status.json.php");
+	}
+
+	if($promo == "-1")
+	{
+		$promo = "";
 	}
 
 	$file = new File();

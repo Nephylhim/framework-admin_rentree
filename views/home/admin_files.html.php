@@ -478,59 +478,6 @@
         });
     }
 
-    function newFile(eventSrc){
-        var libelle = $("#newFileLibelleInput").val();
-        var rang = $("#newFileRankInput").val();
-        var promo = $("#newFilePromoInput").val();
-        console.log(libelle);
-        console.log(rang);
-        console.log(promo);
-        $.ajax({
-            url: "<?=url_for('/files/add'); ?>/"+promo+"/"+rang+"/"+libelle,
-            method: "POST",
-            data: $form.serialize(),
-            contentType: false, // obligatoire pour de l'upload
-            processData: false, // obligatoire pour de l'upload
-            data: data,
-        }).success(function(content){
-            console.log(content);
-            var promoId = $("#promotionNameInput").val();
-            refreshFiles(promoId);
-        });
-    }
-
-    $(function () {
-        $('#newFileForm').on('submit', function (e) {
-            console.log("catch");
-
-            // On empêche le navigateur de soumettre le formulaire
-            //e.preventDefault();
-
-            var $form = $(this);
-            var formdata = (window.FormData) ? new FormData($form[0]) : null;
-            var data = (formdata !== null) ? formdata : $form.serialize();
-
-            var libelle = $("#newFileLibelleInput").val();
-            var rang = $("#newFileRankInput").val();
-            var promo = $("#newFilePromoInput").val();
-
-            $.ajax({
-                url: "<?=url_for('/files/add'); ?>/"+promo+"/"+rang+"/"+libelle,
-                method: "POST",
-                //data: $form.serialize(),
-                //contentType: false, // obligatoire pour de l'upload
-                //processData: false, // obligatoire pour de l'upload
-                data: data,
-            }).success(function(content){
-                console.log(content);
-                var promoId = $("#promotionNameInput").val();
-                refreshFiles(promoId);
-            }).error(function(err){
-                console.log(err);
-            });
-        });
-    });
-
 
 /*------------------------------------------------------------------ Selects ----------------------------------------------------------------------*/
 

@@ -267,11 +267,50 @@
 		}
 
 		function showUpdDataDialog(src){
+            var eleve = $(src).parent().parent().children().eq(1).html();
+			var id = $(src).parent().parent().children().eq(0).html();
+            var nomFils = $(src).parent().parent().children().eq(2).html();
+            var prenomFils = $(src).parent().parent().children().eq(3).html();
+            var ddnFils = $(src).parent().parent().children().eq(4).html();
+            var tel = $(src).parent().parent().children().eq(5).html();
+            var couriel = $(src).parent().parent().children().eq(6).html();
+            var date = $(src).parent().parent().children().eq(7).html();
+            var ip = $(src).parent().parent().children().eq(8).html();
+
+            console.log(id);
+
+			$("#identifiantDataInput").val(eleve);
+			$("#idDataInput").val(id);
+            $("#nom_filsDataInput").val(nomFils);
+            $("#prenom_filsDataInput").val(prenomFils);
+            $("#ddn_filsDataInput").val(ddnFils);
+            $("#tel_mobileDataInput").val(tel);
+            $("#courrielDataInput").val(couriel);
+            $("#dateDataInput").val(date);
+            $("#ipDataInput").val(ip);
+
 			$("#updDataModal").modal({backdrop: true});
 		}
 
-		function updData(){
+		function modifFile(eventSrc){
+            var eleve = $("#identifiantDataInput").val();
+			var id = $("#idDataInput").val();
+            var nomFils = $("#nom_filsDataInput").val();
+            var prenomFils = $("#prenom_filsDataInput").val();
+            var ddnFils = $("#ddn_filsDataInput").val();
+            var tel = $("#tel_mobileDataInput").val();
+            var couriel = $("#courrielDataInput").val();
+            var date = $("#dateDataInput").val();
+            var ip = $("#ipDataInput").val();
 
+            console.log(id+" | "+eleve+" | "+nomFils+" | "+prenomFils);
+
+            $.ajax({
+                url: "<?=url_for('/datas/upd'); ?>/"+id+"/"+eleve+"/"+nomFils+"/"+prenomFils+"/"+ddnFils+"/"+tel+"/"+couriel,
+                method: "POST",
+            }).success(function(){
+                refreshDatas();
+            });
 		}
 
 	</script>

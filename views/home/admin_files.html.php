@@ -169,7 +169,9 @@
                                      <label for="promo">Promotion liée :</label>
                                 </div>
                                 <div class="col-md-6 col-md-offset-1">
-                                    <input  id="filePromoInput" class="form-control">
+                                    <select id="listPromoSelect" class="form-control">
+
+                                    </select>
                                 </div>
 
                                 <div class="col-md-5">
@@ -241,6 +243,7 @@
         refreshPromos();
         refreshFiles(-1);
         $("#promotionNameInput").val("tous"); //fix a bug when you upd or del a file when you haven't select a promo (default : all)
+        refreshPromoSelect();
     });
 
 /*------------------------------------------------------------------ Promos -----------------------------------------------------------------------*/
@@ -348,7 +351,6 @@
                 method: "GET",
                 dataType: "json"
             }).success( function(content){
-                console.log(content);
                 content=parseFileList(content);
                 $("#fileList").html(content);
                 $("#fileList").children("ul").children("li").children(".listBtn").hide();
@@ -384,7 +386,7 @@
 
         $("#fileIdInput").val(fileId);
         $("#fileLibelleInput").val(fileLibelle);
-        $("#filePromoInput").val(filePromo);
+        $("#listPromoSelect").val(filePromo);
         $("#fileRankInput").val(fileRank);
 
         //$("#"+promoId).children(".listBtn").attr("aria-hidden", "false");
@@ -409,7 +411,11 @@
         var id = $("#fileIdInput").val();
         var libelle = $("#fileLibelleInput").val();
         var rang = $("#fileRankInput").val();
-        var promo = $("#filePromoInput").val();
+        var promo = $("#listPromoSelect").val();
+        if(promo == "tous"){
+            promo = "";
+        }
+
         $.ajax({
             url: "<?=url_for('/files/upd'); ?>/"+id+"/"+promo+"/"+rang+"/"+libelle,
             method: "POST",
@@ -430,58 +436,28 @@
         });
     }
 
-    function newFile(eventSrc){
-        var libelle = $("#newFileLibelleInput").val();
-        var rang = $("#newFileRankInput").val();
-        var promo = $("#newFilePromoInput").val();
-        console.log(libelle);
-        console.log(rang);
-        console.log(promo);
+
+/*------------------------------------------------------------------ Selects ----------------------------------------------------------------------*/
+
+    function refreshPromoSelect(){
         $.ajax({
-            url: "<?=url_for('/files/add'); ?>/"+promo+"/"+rang+"/"+libelle,
-            method: "POST",
-            data: $form.serialize(),
-            contentType: false, // obligatoire pour de l'upload
-            processData: false, // obligatoire pour de l'upload
-            data: data,
-        }).success(function(content){
-            console.log(content);
-            var promoId = $("#promotionNameInput").val();
-            refreshFiles(promoId);
+            url: "<?=url_for('/promos/get'); ?>",
+            method: "GET",
+            dataType: "json"
+        }).success( function(content){
+            content=parsePromoSelect(content);
+            $("#listPromoSelect").html(content);
         });
     }
 
-    $(function () {
-        $('#newFileForm').on('submit', function (e) {
-            console.log("catch");
+    function parsePromoSelect(content){
+        listParsed = '<option value="tous">Commun à toutes les promos</option>';
 
-            // On empêche le navigateur de soumettre le formulaire
-            //e.preventDefault();
-
-            var $form = $(this);
-            var formdata = (window.FormData) ? new FormData($form[0]) : null;
-            var data = (formdata !== null) ? formdata : $form.serialize();
-
-            var libelle = $("#newFileLibelleInput").val();
-            var rang = $("#newFileRankInput").val();
-            var promo = $("#newFilePromoInput").val();
-
-            $.ajax({
-                url: "<?=url_for('/files/add'); ?>/"+promo+"/"+rang+"/"+libelle,
-                method: "POST",
-                //data: $form.serialize(),
-                //contentType: false, // obligatoire pour de l'upload
-                //processData: false, // obligatoire pour de l'upload
-                data: data,
-            }).success(function(content){
-                console.log(content);
-                var promoId = $("#promotionNameInput").val();
-                refreshFiles(promoId);
-            }).error(function(err){
-                console.log(err);
-            });
-        });
-    });
+        for(i=0; i<content.promos.length; i++){
+            listParsed += '<option value="'+content.promos[i].promo+'">'+content.promos[i].label+'</option>';
+        }
+        return listParsed;
+    }
 
 </script>
 

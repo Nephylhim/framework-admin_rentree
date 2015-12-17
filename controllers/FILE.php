@@ -67,8 +67,9 @@ function addFile()
 	if(!(isset($_FILES["document"]) && $_FILES["document"]["error"] == 0))
 	{
 		set("status", false);
-		header('Content-Type: application/json');
-		return render("status.json.php");
+		set("file", $_FILES["document"]["name"]);
+
+		return render("files/statusUploadFile.html.php");
 	}
 
 	if($promo == "-1")
@@ -85,7 +86,7 @@ function addFile()
 	$status = $file->create();
 
 	set("status", $status);
+	set("file", $_FILES["document"]["name"]);
 
-	header('Content-Type: application/json');
-	return render("status.json.php");
+	return render("files/statusUploadFile.html.php");
 }

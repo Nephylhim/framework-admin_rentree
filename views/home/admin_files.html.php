@@ -278,6 +278,7 @@
     $(document).ready(function(){
         refreshPromos();
         refreshFiles(-1);
+        $("#promotionNameInput").val("tous"); //fix a bug when you upd or del a file when you haven't select a promo (default : all)
     });
 
 /*------------------------------------------------------------------ Promos -----------------------------------------------------------------------*/
@@ -379,16 +380,20 @@
 /*------------------------------------------------------------------- Files -----------------------------------------------------------------------*/
 
     function refreshFiles(wyw){
-        $.ajax({
-            url: "<?=url_for('/files/get'); ?>/promo/"+wyw,
-            method: "GET",
-            dataType: "json"
-        }).success( function(content){
-            console.log(content);
-            content=parseFileList(content);
-            $("#fileList").html(content);
-            $("#fileList").children("ul").children("li").children(".listBtn").hide();
-        });
+        if(wyw != "tous"){
+            $.ajax({
+                url: "<?=url_for('/files/get'); ?>/promo/"+wyw,
+                method: "GET",
+                dataType: "json"
+            }).success( function(content){
+                console.log(content);
+                content=parseFileList(content);
+                $("#fileList").html(content);
+                $("#fileList").children("ul").children("li").children(".listBtn").hide();
+            });
+        }else{
+            refreshFiles(-1);
+        }
     }
 
     function parseFileList(content){

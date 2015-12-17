@@ -6,6 +6,7 @@ class File implements JsonSerializable
 	private $promo = "";
 	private $libelle = "";
 	private $fichier = "";
+	private $fichierOK = "";
 
 	/**
 	 * @return int
@@ -87,11 +88,27 @@ class File implements JsonSerializable
 		$this->fichier = $fichier;
 	}
 
+	/**
+	 * @return string
+	 */
+	public function getFichierOK()
+	{
+		return $this->fichierOK;
+	}
+
+	/**
+	 * @param string $fichierOK
+	 */
+	public function setFichierOK($fichierOK)
+	{
+		$this->fichierOK = $fichierOK;
+	}
+
 	public function create()
 	{
 		global $bdd;
 
-		$newFile = basename($this->getFichier());
+		$newFile = basename($this->getFichierOK());
 
 		if(is_uploaded_file($this->getFichier()))
 		{

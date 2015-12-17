@@ -81,6 +81,7 @@ function addFile()
 	$file->setRang($rang);
 	$file->setLibelle($libelle);
 	$file->setFichier($_FILES["document"]["tmp_name"]);
+	$file->setFichierOK($_FILES["document"]["name"]);
 	$status = $file->create();
 
 	set("status", $status);

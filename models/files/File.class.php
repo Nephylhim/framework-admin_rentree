@@ -110,21 +110,10 @@ class File implements JsonSerializable
 
 		$newFile = basename($this->getFichierOK());
 
-		if(is_uploaded_file($this->getFichier()))
-		{
-			echo "true   ";
-		}
-		else
-		{
-			echo "false  ";
-		}
-
-		echo $this->getFichier()."     ".dirname(__FILE__)."/../../rentree/pdf/".$newFile;
 		$ok = move_uploaded_file($this->getFichier(), dirname(__FILE__)."/../../rentree/pdf/".$newFile);
 
 		if(!$ok)
 		{
-			echo "     argh";
 			return false;
 		}
 
@@ -146,7 +135,6 @@ class File implements JsonSerializable
 
 		if(!$ok)
 		{
-			echo "     goulou";
 			$bdd->rollBack();
 			return false;
 		}
@@ -159,7 +147,6 @@ class File implements JsonSerializable
 
 		if(!$ok)
 		{
-			echo "     scrogneugneu";
 			$bdd->rollBack();
 			return false;
 		}

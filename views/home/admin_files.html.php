@@ -169,13 +169,6 @@
                                      <label for="promo">Promotion liée :</label>
                                 </div>
                                 <div class="col-md-6 col-md-offset-1">
-                                    <input  id="filePromoInput" class="form-control">
-                                </div>
-
-                                <div class="col-md-5">
-                                     <label for="promo">Promotion liée :</label>
-                                </div>
-                                <div class="col-md-6 col-md-offset-1">
                                     <select id="listPromoSelect" class="form-control">
 
                                     </select>
@@ -396,7 +389,6 @@
                 method: "GET",
                 dataType: "json"
             }).success( function(content){
-                console.log(content);
                 content=parseFileList(content);
                 $("#fileList").html(content);
                 $("#fileList").children("ul").children("li").children(".listBtn").hide();
@@ -432,7 +424,7 @@
 
         $("#fileIdInput").val(fileId);
         $("#fileLibelleInput").val(fileLibelle);
-        $("#filePromoInput").val(filePromo);
+        $("#listPromoSelect").val(filePromo);
         $("#fileRankInput").val(fileRank);
 
         //$("#"+promoId).children(".listBtn").attr("aria-hidden", "false");
@@ -457,7 +449,11 @@
         var id = $("#fileIdInput").val();
         var libelle = $("#fileLibelleInput").val();
         var rang = $("#fileRankInput").val();
-        var promo = $("#filePromoInput").val();
+        var promo = $("#listPromoSelect").val();
+        if(promo == "tous"){
+            promo = "";
+        }
+
         $.ajax({
             url: "<?=url_for('/files/upd'); ?>/"+id+"/"+promo+"/"+rang+"/"+libelle,
             method: "POST",
@@ -493,7 +489,7 @@
     }
 
     function parsePromoSelect(content){
-        listParsed = '';
+        listParsed = '<option value="tous">Commun à toutes les promos</option>';
 
         for(i=0; i<content.promos.length; i++){
             listParsed += '<option value="'+content.promos[i].promo+'">'+content.promos[i].label+'</option>';

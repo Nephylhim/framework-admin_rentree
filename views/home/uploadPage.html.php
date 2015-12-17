@@ -8,7 +8,7 @@
 	</head>
 	<body>
 
-	<div class="row" style="background-color: white;">
+	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
 			<form id="newFileForm" method="post" action="" enctype="multipart/form-data">
 				<div class="row">

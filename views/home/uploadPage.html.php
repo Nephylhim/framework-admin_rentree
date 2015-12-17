@@ -29,11 +29,13 @@
 					</div>
 
 					<div class="col-md-5">
-						<label class="control-label">Promo liée :</label>
-					</div>
-					<div class="col-md-6 col-md-offset-1">
-						<input  id="newFilePromoInput" class="form-control" required>
-					</div>
+                         <label for="promo">Promotion liée :</label>
+                    </div>
+                    <div class="col-md-6 col-md-offset-1">
+                        <select id="listPromoSelect" class="form-control">
+
+                        </select>
+                    </div>
 
 					<div class="col-md-5">
 						<label class="control-label">Rang :</label>
@@ -52,14 +54,39 @@
 	</div>
 
 		<script>
+            $(document).ready(function(){
+                refreshPromoSelect();
+            });
+
 			$(function(){
 				$('#newFileForm').submit(function(event){
 					var action = '';
-					action = "<?=url_for('/files/add')?>" + "/" + $("#newFilePromoInput").val() + "/" + $("#newFileRankInput").val() + "/" + $("#newFileLibelleInput").val() + "/"
+					action = "<?=url_for('/files/add')?>" + "/" + $("#listPromoSelect").val() + "/" + $("#newFileRankInput").val() + "/" + $("#newFileLibelleInput").val() + "/"
 					console.log(action);
 					//event.preventDefault();
 					$(this).attr('action', action);
-				})});
+				})
+            });
+
+            function refreshPromoSelect(){
+                $.ajax({
+                    url: "<?=url_for('/promos/get'); ?>",
+                    method: "GET",
+                    dataType: "json"
+                }).success( function(content){
+                    content=parsePromoSelect(content);
+                    $("#listPromoSelect").html(content);
+                });
+            }
+
+            function parsePromoSelect(content){
+                listParsed = '<option value="tous">Commun à toutes les promos</option>';
+
+                for(i=0; i<content.promos.length; i++){
+                    listParsed += '<option value="'+content.promos[i].promo+'">'+content.promos[i].label+'</option>';
+                }
+                return listParsed;
+            }
 		</script>
 	</body>
 </html>

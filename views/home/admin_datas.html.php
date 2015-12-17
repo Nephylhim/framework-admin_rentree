@@ -64,7 +64,7 @@
 					<p>Êtes-vous sur de vouloir supprimer toutes les données élèves ?</p>
 				</div>
 				<div class="modal-footer">
-					<button id="delFileBtn" class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="delAllDatas()">Supprimer toutes les données élèves</button>
+					<button id="delFileBtn" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" onclick="delAllDatas()">Supprimer toutes les données élèves</button>
 					<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
 
 				</div>
@@ -86,7 +86,7 @@
 					<p>Êtes-vous sur de vouloir supprimer données élèves de l'elév identifié par <span id="delDataLabel"></span> (id n°<span id="idDataLabel"></span>) ?</p>
 				</div>
 				<div class="modal-footer">
-					<button id="delFileBtn" class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="delData()">Supprimer l'élève</button>
+					<button id="delFileBtn" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" onclick="delData()">Supprimer l'élève</button>
 					<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
 
 				</div>
@@ -173,7 +173,7 @@
 					<br>
 				</div>
 				<div class="modal-footer">
-					<button id="editFile" class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="modifFile(this)">Sauvegarder</button>
+					<button id="editFile" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" onclick="modifFile(this)">Sauvegarder</button>
 					<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
 
 				</div>

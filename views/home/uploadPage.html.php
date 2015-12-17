@@ -45,7 +45,7 @@
 					</div>
 				</div>
 				<div class="center">
-					<button id="newFileBtn" title="Ajouter un fichier" class="btn btn-success" style="display: inline" data-dismiss="modal" aria-hidden="true" type="submit">
+					<button id="newFileBtn" title="Ajouter un fichier" class="btn btn-primary" style="display: inline" data-dismiss="modal" aria-hidden="true" type="submit">
 						Envoyer le fichier
 					</button>
 				</div>

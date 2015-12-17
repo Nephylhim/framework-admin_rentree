@@ -84,7 +84,7 @@
                               <br>
                           </div>
                           <div class="modal-footer">
-                          <button id="editPromo" class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="modifPromo(this)">Sauvegarder</button>
+                          <button id="editPromo" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" onclick="modifPromo(this)">Sauvegarder</button>
                           <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
 
                           </div>
@@ -106,7 +106,7 @@
                               <p>Êtes-vous sur de vouloir supprimer la promotion <span id="disPromoLabel"></span> ?</p>
                           </div>
                           <div class="modal-footer">
-                          <button id="delPromoBtn" class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="delPromo(this)">Supprimer</button>
+                          <button id="delPromoBtn" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" onclick="delPromo(this)">Supprimer</button>
                           <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
 
                           </div>
@@ -135,7 +135,7 @@
                             </div>
                           </div>
                           <div class="modal-footer">
-                          <button id="newPromoBtn" title="Ajouter une promotion" class="btn btn-success" style="display: inline-block;" onclick="newPromo()" data-dismiss="modal" aria-hidden="true">Valider</button>
+                          <button id="newPromoBtn" title="Ajouter une promotion" class="btn btn-primary" style="display: inline-block;" onclick="newPromo()" data-dismiss="modal" aria-hidden="true">Valider</button>
                           <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
 
                           </div>
@@ -184,7 +184,7 @@
                               <br>
                           </div>
                           <div class="modal-footer">
-                          <button id="editFile" class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="modifFile(this)">Sauvegarder</button>
+                          <button id="editFile" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" onclick="modifFile(this)">Sauvegarder</button>
                           <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
 
                           </div>
@@ -206,7 +206,7 @@
                               <p>Êtes-vous sur de vouloir supprimer le fichier <span id="disFileLabel"></span> ?</p>
                           </div>
                           <div class="modal-footer">
-                          <button id="delFileBtn" class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="delFile(this)">Supprimer</button>
+                          <button id="delFileBtn" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" onclick="delFile(this)">Supprimer</button>
                           <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
 
                           </div>

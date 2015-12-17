@@ -93,10 +93,21 @@ class File implements JsonSerializable
 
 		$newFile = basename($this->getFichier());
 
+		if(is_uploaded_file($this->getFichier()))
+		{
+			echo "true   ";
+		}
+		else
+		{
+			echo "false  ";
+		}
+
+		echo $this->getFichier()."     ".dirname(__FILE__)."/../../rentree/pdf/".$newFile;
 		$ok = move_uploaded_file($this->getFichier(), dirname(__FILE__)."/../../rentree/pdf/".$newFile);
 
 		if(!$ok)
 		{
+			echo "     argh";
 			return false;
 		}
 

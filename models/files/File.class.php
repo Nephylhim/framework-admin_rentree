@@ -129,6 +129,7 @@ class File implements JsonSerializable
 
 		if(!$ok)
 		{
+			echo "     goulou";
 			$bdd->rollBack();
 			return false;
 		}
@@ -141,6 +142,7 @@ class File implements JsonSerializable
 
 		if(!$ok)
 		{
+			echo "     scrogneugneu";
 			$bdd->rollBack();
 			return false;
 		}

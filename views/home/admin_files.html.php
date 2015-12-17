@@ -222,50 +222,12 @@
                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                             <h4 class="modal-title" id="myModalLabel">Ajouter un Fichier</h4>
                           </div>
-                          <form id="newFileForm" method="post" action="rien.php">
-                              <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <label class="control-label">Sélectionnez le fichier :</label>
-                                    </div>
-                                    <div class="col-md-6 col-md-offset-1">
-                                        <div class="btn btn-primary btn-file upload">
-                                            <i class="glyphicon glyphicon-folder-open"></i>
-                                            <span class="hidden-xs">Parcourir …</span>
-                                            <input id="input-1" class="file" type="file" name="document">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-5">
-                                        <label class="control-label">Libéllé :</label>
-                                    </div>
-                                    <div class="col-md-6 col-md-offset-1">
-                                        <input  id="newFileLibelleInput" class="form-control">
-                                    </div>
-
-                                    <div class="col-md-5">
-                                        <label class="control-label">Promo liée :</label>
-                                    </div>
-                                    <div class="col-md-6 col-md-offset-1">
-                                        <input  id="newFilePromoInput" class="form-control">
-                                    </div>
-
-                                    <div class="col-md-5">
-                                        <label class="control-label">Rang :</label>
-                                    </div>
-                                    <div class="col-md-6 col-md-offset-1">
-                                        <input  id="newFileRankInput" class="form-control">
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="modal-footer">
-                              <button id="newFileBtn" title="Ajouter un fichier" class="btn btn-success" style="display: inline-block;" data-dismiss="modal" aria-hidden="true" type="submit">Valider</button>
-                              <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Annuler</button>
-
-                              </div>
-                          </form>
+                          <div id="uploadIframeDiv">
+                              <iframe class="uploadIframe" src="<?= url_for("/upload")?>" frameborder="0"></iframe>
+                          </div>
+                          <div class="modal-footer">
+                              <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true" onclick="refreshPromos();refreshFiles(-1);">Quitter</button>
                         </div>
-
                       </div>
                     </div>
 

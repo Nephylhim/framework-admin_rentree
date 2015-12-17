@@ -7,6 +7,8 @@
         </div>
         <div class="col-md-4">
             <h1 class="center blisen">Panneau d'administration</h1>
+        </div><div class="col-md-4">
+            <h1 class="center blisen" style="color: #B72321">Brest - Rennes</h1>
         </div>
     </div>
 </div>
@@ -26,7 +28,7 @@
                 <div class="row">
                     <div class="col-md-12 center">
                         <button id="newPromoModalBtn" title="Ajouter une promotion" class="btn btn-primary" style="display: inline-block;" onclick="showNewPromoModal(this)">
-                            Ajouter
+                            Ajouter une promotion
                         </button>
                     </div>
                 </div>
@@ -46,7 +48,7 @@
                 <div class="row">
                     <div class="col-md-12 center">
                         <button id="newFileModalBtn" title="Ajouter un fichier" class="btn btn-primary" style="display: inline-block;" onclick="showNewFileModal(this)">
-                            Ajouter
+                            Ajouter un fichier
                         </button>
                     </div>
                 </div>
@@ -103,7 +105,7 @@
                             <h4 class="modal-title" id="myModalLabel">Suppression de promotion</h4>
                           </div>
                           <div class="modal-body">
-                              <p>Êtes-vous sur de vouloir supprimer la promotion <span id="disPromoLabel"></span> ?</p>
+                              <p>Êtes-vous sur de vouloir supprimer la promotion <span id="disPromoLabel"></span> ainsi que tout les documents associés ?</p>
                           </div>
                           <div class="modal-footer">
                           <button id="delPromoBtn" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" onclick="delPromo(this)">Supprimer</button>

@@ -64,12 +64,29 @@ nav a{
     margin: 0.1em 1em;
 }
     nav a:hover{
-        background-color: #ce2f2f;
-        color: white;
+        background-color: #CCFFCC;
+        color: blue;
         text-decoration: none;
     }
 
+    img{
+        margin-left: 1em;
+        margin-top: 1em;
+    }
 
+.btn, nav a{
+    color: white;
+    background-color: #666699;
+    border-bottom: thin solid #222244;
+    border-right: thin solid #222244;
+    border-top: thin solid #9999cc;
+    border-left: thin solid #9999cc;
+    font-size: 11px;
+    font-family: Geneva,Helvetica,sans-serif;
+    font-weight: normal;
+    cursor: pointer;
+    border-radius: 0;
+}
 /*------------------------------------------------------------- Listes -------------------------------------------------------------------*/
 .limitedHeight{
     max-height: 66vh;
@@ -79,7 +96,7 @@ nav a{
 .listPanel{
     width: 100%;
 
-    background-color: white;
+    background-color: #FFFFCC;
 }
 
 .listPanel h1{
@@ -127,7 +144,7 @@ nav a{
         background-color: #efefef;
     }
     .promotionListPanel ul li:hover{
-        background-color: #dddddd;
+        background-color: #CCFFCC;
     }
 
 
@@ -162,7 +179,7 @@ nav a{
         background-color: #efefef;
     }
     .fileListPanel ul li:hover{
-        background-color: #dddddd;
+        background-color: #CCFFCC;
     }
 
 /*------------------------------------------------------------- Upload Iframe -------------------------------------------------------------------*/
@@ -202,7 +219,7 @@ table tr:nth-child(2n+1){
 }
 
 table tr:hover{
-    background-color: #dddddd;
+    background-color: #CCFFCC;
 }
 
 

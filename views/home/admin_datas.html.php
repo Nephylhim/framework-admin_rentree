@@ -26,8 +26,8 @@
                     <button id="exportDatasBtn" title="Exporter au format csv" class="btn btn-primary" style="display: inline-block;" onclick="downloadDataCsv()">
 						Exporter au format csv
                     </button>
-					<button id="deleteDatasBtn" title="Supprimer toute les données" class="btn btn-danger" style="display: inline-block;" onclick="showDelAllDatasDialog()">
-						Supprimer toute les données
+					<button id="deleteDatasBtn" title="Supprimer toutes les données" class="btn btn-danger" style="display: inline-block;" onclick="showDelAllDatasDialog()">
+						Supprimer toutes les données
                     </button>
                 </div>
 

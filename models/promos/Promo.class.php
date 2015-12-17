@@ -89,7 +89,7 @@ class Promo implements JsonSerializable
 			$bdd->rollBack();
 			return false;
 		}
-		/*
+
 		//deleting files related to the deleted promo
 		$files = Files::getAllDocumentByPromo($this->getPromo());
 		foreach($files as $file)
@@ -100,7 +100,7 @@ class Promo implements JsonSerializable
 				$bdd->rollBack();
 				return false;
 			}
-		}*/
+		}
 
 		$bdd->commit();
 		return true;

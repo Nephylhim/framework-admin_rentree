@@ -228,6 +228,7 @@
                               <iframe class="uploadIframe" src="<?= url_for("/upload")?>" frameborder="0"></iframe>
                           </div>
                           <div class="modal-footer">
+                              <button class="btn btn-primary" aria-hidden="true" onclick="addUploadIframe()">Envoyer un nouveau fichier</button>
                               <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true" onclick="refreshPromos();refreshFiles(-1);">Quitter</button>
                         </div>
                       </div>
@@ -436,6 +437,9 @@
         });
     }
 
+    function addUploadIframe(){
+        $(".uploadIframe").attr('src', "<?= url_for("/upload"); ?>");
+    }
 
 /*------------------------------------------------------------------ Selects ----------------------------------------------------------------------*/
 

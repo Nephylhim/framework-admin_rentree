@@ -320,7 +320,7 @@
     }
 
     function newPromo(){
-        var name = $("#newPromoName").val().replace(/\ /g, "_");;
+        var name = $("#newPromoName").val().replace(/\ /g, "_");
         var label = $("#newPromoLbl").val();
         $.ajax({
             url: "<?=url_for('/promos/add'); ?>/"+name+"/"+label,
@@ -333,7 +333,7 @@
         $.ajax({
             url: "<?=url_for('/promos/del'); ?>/"+name,
             method: "POST",
-        }).success( refreshPromos() );
+        }).success(function(){refreshPromos();refreshFiles(-1);} );
     }
 
     function modifPromo(eventSrc){

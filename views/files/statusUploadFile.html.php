@@ -8,11 +8,11 @@
 		<?php
 		if($status)
 		{
-			echo "L'envoi du fichier ".$file." à réussi.";
+			echo "L'envoi du fichier ".$file." à <span style=\"color:green\">réussi.</span>";
 		}
 		else
 		{
-			echo "L'envoi du fichier ".$file." à échoué.";
+			echo "L'envoi du fichier ".$file." à <span style=\"color:red\">échoué.</span>";
 		}
 		?>
 	</p>

@@ -78,7 +78,7 @@
                                       <input  id="promotionNameInput" class="form-control" disabled>
                                   </div>
                                   <div class=" col-md-6 col-md-offset-1">
-                                      <input  id="promotionLabelInput" class="form-control">
+                                      <input  id="promotionLabelInput" class="form-control" required>
                                   </div>
                               </div>
                               <br>
@@ -127,10 +127,10 @@
                           <div class="modal-body">
                               <div class="newPromo row">
                                 <div class="col-md-6">
-                                    <input id="newPromoName" class="form-control" placeholder="Nouvelle promotion : nom"/>
+                                    <input id="newPromoName" class="form-control" placeholder="Nouvelle promotion : nom" required/>
                                 </div>
                                 <div class="col-md-6">
-                                    <input id="newPromoLbl" class="form-control" placeholder="Nouvelle promotion : label"/>
+                                    <input id="newPromoLbl" class="form-control" placeholder="Nouvelle promotion : label" required/>
                                 </div>
                             </div>
                           </div>
@@ -162,7 +162,7 @@
                                      <label for="libelle">Libéllé :</label>
                                 </div>
                                 <div class=" col-md-6 col-md-offset-1">
-                                    <input  id="fileLibelleInput" class="form-control">
+                                    <input  id="fileLibelleInput" class="form-control" required>
                                 </div>
 
                                 <div class="col-md-5">
@@ -178,7 +178,7 @@
                                      <label for="rank">Rang :</label>
                                 </div>
                                 <div class="col-md-6 col-md-offset-1">
-                                    <input  id="fileRankInput" class="form-control">
+                                    <input  id="fileRankInput" class="form-control" required>
                                 </div>
                               </div>
                               <br>

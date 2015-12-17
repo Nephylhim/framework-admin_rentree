@@ -118,42 +118,42 @@
 							<label for="identifiantDataInput">Identifiant :</label>
 						</div>
 						<div class=" col-md-6 col-md-offset-1">
-							<input  id="identifiantDataInput" class="form-control">
+							<input  id="identifiantDataInput" class="form-control" required>
 						</div>
 
 						<div class="col-md-5">
 							<label for="nom_filsDataInput">Nom :</label>
 						</div>
 						<div class=" col-md-6 col-md-offset-1">
-							<input  id="nom_filsDataInput" class="form-control">
+							<input  id="nom_filsDataInput" class="form-control" required>
 						</div>
 
 						<div class="col-md-5">
 							<label for="prenom_filsDataInput">Prénom :</label>
 						</div>
 						<div class=" col-md-6 col-md-offset-1">
-							<input  id="prenom_filsDataInput" class="form-control">
+							<input  id="prenom_filsDataInput" class="form-control" required>
 						</div>
 
 						<div class="col-md-5">
 							<label for="ddn_filsDataInput">Date de naissance (jj-mm-aa) :</label>
 						</div>
 						<div class=" col-md-6 col-md-offset-1">
-							<input  id="ddn_filsDataInput" class="form-control">
+							<input  id="ddn_filsDataInput" class="form-control" required>
 						</div>
 
 						<div class="col-md-5">
 							<label for="tel_mobileDataInput">Tel_mobile :</label>
 						</div>
 						<div class=" col-md-6 col-md-offset-1">
-							<input  id="tel_mobileDataInput" class="form-control">
+							<input  id="tel_mobileDataInput" class="form-control" required>
 						</div>
 
 						<div class="col-md-5">
 							<label for="courrielDataInput">Courriel parents :</label>
 						</div>
 						<div class=" col-md-6 col-md-offset-1">
-							<input  id="courrielDataInput" class="form-control">
+							<input  id="courrielDataInput" class="form-control" required>
 						</div>
 
 						<div class="col-md-5">

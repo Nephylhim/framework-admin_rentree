@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mar 08 Décembre 2015 à 14:02
+-- Généré le: Ven 18 Décembre 2015 à 12:43
 -- Version du serveur: 5.5.46-0ubuntu0.14.04.2
 -- Version de PHP: 5.5.9-1ubuntu4.14
 
@@ -37,14 +37,28 @@ CREATE TABLE IF NOT EXISTS `data` (
   `date` datetime NOT NULL,
   `ip` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
 
 --
 -- Contenu de la table `data`
 --
 
 INSERT INTO `data` (`id`, `identifiant`, `nom_fils`, `prenom_fils`, `ddn_fils`, `tel_mobile`, `courriel`, `date`, `ip`) VALUES
-(1, 'toto@gmail.com', 'AAAA', 'aaaa', '13 novembre 2015', '0123456789', 'parents@gmail.com', '2015-11-24 16:48:53', '127.0.0.1');
+(1, 'a', 'a', 'a', 'a', 'a', 'a', '2015-12-16 14:11:46', '127.0.0.1'),
+(2, 'b', 'b', 'b', 'b', 'b', 'b', '2015-12-16 14:12:04', '127.0.0.1'),
+(3, 'c', 'c', 'c', 'c', 'c', 'c', '2015-12-16 14:12:20', '127.0.0.1'),
+(4, 'c', 'c', 'c', 'c', 'c', 'c', '2015-12-16 14:12:20', '127.0.0.1'),
+(5, 'b', 'b', 'b', 'b', 'b', 'b', '2015-12-16 14:12:04', '127.0.0.1'),
+(6, 'a', 'a', 'a', 'a', 'a', 'a', '2015-12-16 14:11:46', '127.0.0.1'),
+(7, 'd', 'd', 'd', 'd', 'd', 'd', '2015-12-16 14:11:46', '127.0.0.1'),
+(8, 'r', 'r', 'r', 'r', 'r', 'r', '2015-12-16 14:12:04', '127.0.0.1'),
+(9, 'g', 'g', 'g', 'g', 'g', 'g', '2015-12-16 14:11:46', '127.0.0.1'),
+(12, 'rfr', 'frfr', 'fefg', 'efgef', 'eff', 'frggg', '2015-12-18 00:41:13', '127.0.0.1'),
+(13, 'frg', 'rgg((y', 'g(y(''', 'g(y(''t', '(y''te', '''gt(''g', '2015-12-18 00:41:38', '127.0.0.1'),
+(14, 'b', 'b', 'b', 'b', 'b', 'b', '2015-12-16 14:12:04', '127.0.0.1'),
+(15, 'b', 'b', 'b', 'b', 'b', 'b', '2015-12-16 14:12:04', '127.0.0.1'),
+(16, 'rfr', 'frfr', 'fefg', 'efgef', 'eff', 'frggg', '2015-12-18 00:41:13', '127.0.0.1'),
+(17, 'b', 'b', 'b', 'b', 'b', 'b', '2015-12-16 14:12:04', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -146,9 +160,9 @@ INSERT INTO `promo_label` (`promo`, `label`) VALUES
 ('CIPA_A5', '5&#x1D49; année, Cycle Ingénieur Par l''Apprentissage'),
 ('CIR_A3_ALT', '3&#x1D49; année, Cycle Informatique et Réseaux (alternant)'),
 ('CIR_A3_NONALT', '3&#x1D49; année, Cycle Informatique et Réseaux (non alternant)'),
-('CIR_BREST_A1', '1&#x02B3;&#x1D49; année, Cycle Informatique et Réseaux (Brest)'),
+('CIR_BREST_A1', '1ʳᵉ année, Cycle Informatique et Réseaux (Brest)'),
 ('CIR_BREST_A2', '2&#x1D49; année, Cycle Informatique et Réseaux (Brest)'),
-('CIR_RENNES_A1', '1&#x02B3;&#x1D49; année, Cycle Informatique et Réseaux (Rennes)'),
+('CIR_RENNES_A1', '1ʳᵉ année, Cycle Informatique et Réseaux (Rennes)'),
 ('CIR_RENNES_A2', '2&#x1D49; année, Cycle Informatique et Réseaux (Rennes)'),
 ('CSI_A1', '1&#x02B3;&#x1D49; année, Cycle Sciences de l''Ingénieur'),
 ('CSI_A2', '2&#x1D49; année, Cycle Sciences de l''Ingénieur'),

@@ -74,7 +74,7 @@ nav a{
         margin-top: 1em;
     }
 
-.btn, nav a{
+.btn, nav a, .button-m{
     color: white;
     background-color: #666699;
     border-bottom: thin solid #222244;
